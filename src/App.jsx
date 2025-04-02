@@ -8,6 +8,7 @@ import "./App.css";
 import "./scss/style.scss";
 
 import { Home } from "./pages/Home/Home";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<AboutUs />} />
           </Routes>
         </main>
         <Footer />

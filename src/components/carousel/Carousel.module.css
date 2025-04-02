@@ -1,21 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Aldrich&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
-.carouselContainerStyle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.carouselStyle {
-  display: flex;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  width: 100%;
-  padding: 10px 0;
-}
-
 .carouselItemStyle {
-  min-width: 200px;
+  min-width: 300px;
+  width: 200px;
   margin: 0 10px;
   background: #2d2d2d;
   border: 2px solid #ccc;
@@ -25,13 +12,15 @@
   align-items: center;
   justify-content: center;
   padding: 10px;
+  flex-grow: auto;
 }
 
 .textStyle {
   font-family: "Kodchasan", sans-serif;
   color: #dee2e6;
-  font-size: 1.2rem;
+  font-size: 2rem;
   text-align: center;
+  justify-content: center;
 }
 
 .arrowStyle {
