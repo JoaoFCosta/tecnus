@@ -7,7 +7,7 @@ import { Link } from "react-router";
 
 const Header = () => {
   return (
-    <header className={`navbar navbar-expand-lg navbar-dark text-light p-3 d-flex ${styles.header}`}>
+    <header className={`navbar navbar-expand-lg text-light p-3 d-flex ${styles.header}`}>
       <div className="container-fluid">
         <Link className="my-3 mx-3 fs-3 fw-bold text-decoration-none text-white" to="/">
            Tecnus Saturn
@@ -15,7 +15,7 @@ const Header = () => {
 
         <div className="d-flex align-content-center gap-4 fs-5">
           <div className={styles.navbar}>Cursos</div>
-          <div className={styles.navbar}>Sobre nós</div>
+          <Link to="/about" className={styles.navbar}>Sobre nós</Link>
         </div>
 
         <div className="d-flex align-items-center fs-5">

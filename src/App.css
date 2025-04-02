@@ -25,6 +25,7 @@ body {
 }
 
 main {
+  margin: 8rem 0 auto;
   flex: 1; /* Faz o conteúdo principal ocupar o espaço restante */
 }
 
