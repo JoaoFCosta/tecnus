@@ -3,3 +3,8 @@
 .navbar {
     font-family: 'Kodchasan', sans-serif;
 }
+
+.header {
+    background: rgba(16, 16, 16, 0.5);
+    backdrop-filter: blur(10px);
+}

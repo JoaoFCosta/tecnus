@@ -1,30 +1,54 @@
 import React from "react";
-import Header from "../../components/header/Header";
 import styles from "./Home.module.css";
-import TecnusLogo from "../../assets/LOGOVETOBRANCO1.png";
+import TecnusLogo from "../../assets/LOGOVETO.svg";
+import Carousel from "../../components/carousel/Carousel";
 
 export const Home = () => {
   return (
-    <div>
-      <Header />
+    <>
+      {/* Seção "Quem Somos Nós" */}
+      <div className="container d-flex flex-column justify-content-center align-items-center mt-5 text-white">
+        <div className="row align-items-center">
+          {/* Texto */}
+          <div className="col-md-6 px-5">
+            <h1 className="text-header-color fw-bold fs-1 text-center">
+              Quem somos nós?
+            </h1>
+            <p className={`mt-4 fs-5 text-justify ${styles.text}`}>
+              Projeto social da Enactus FACAMP, que promove o letramento digital
+              e capacitação profissional para jovens e adultos da rede pública
+              de ensino e de instituições vulneráveis através de cursos
+              gratuitos
+            </p>
+          </div>
 
-      <div className="col-12 d-flex flex-column justify-content-center align-items-center vh-100">
-        <div className="w-100">
-          <h2 className="display-6 fw-bold text-specific-color">
-            Quem somos nós?
-          </h2>
+          {/* Imagem */}
+          <div className="col-md-6 text-center">
+            <img
+              src={TecnusLogo}
+              alt="Logo"
+              className="w-50"
+              style={{ maxWidth: "300px" }}
+            />
+          </div>
 
-          <p
-            className={`mt-4 fs-5 text-light align-items-start w-25 ${styles.text}`}
-          >
-            Projeto social da Enactus FACAMP, que promove o letramento digital e
-            capacitação profissional para jovens e adultos da rede pública de
-            ensino e de instituições vulneráveis através de cursos gratuitos
-          </p>
+          <div className="col-md-6 text-center">
+            <button className={styles.aboutBtn}>Saiba mais</button>
+          </div>
         </div>
-        <img src={TecnusLogo} alt=""/>
+
+        <h1 className="mt-5 mb-5 text-header-color fw-bold">
+          Quais cursos oferecemos?
+        </h1>
       </div>
-    </div>
+
+      <div className="row d-flex flex-row">
+        <div className="col-4"></div>
+        <div className="col-8">
+          <Carousel />
+        </div>
+      </div>
+    </>
   );
 };
 
