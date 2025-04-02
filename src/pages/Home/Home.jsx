@@ -32,11 +32,11 @@ export const Home = () => {
               style={{ maxWidth: "300px" }}
             />
           </div>
-          <Link to="/about" className="col-md-6 text-center">
-            <div className="col-md-6 text-center">
+          <div className="container col-8">
+            <Link to="/about">
               <button className={styles.aboutBtn}>Saiba mais</button>
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
 
         <h1 className="mt-5 mb-5 text-header-color fw-bold">
