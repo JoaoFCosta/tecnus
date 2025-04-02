@@ -18,13 +18,13 @@ const MemberCarousel = () => {
   };
 
   const members = [
-    { name: "Nome do Membro 1", image: "https://placehold.co/151x151" },
-    { name: "Nome do Membro 2", image: "https://placehold.co/151x151" },
-    { name: "Nome do Membro 3", image: "https://placehold.co/151x151" },
-    { name: "Nome do Membro 4", image: "https://placehold.co/151x151" },
-    { name: "Nome do Membro 5", image: "https://placehold.co/151x151" },
-    { name: "Nome do Membro 6", image: "https://placehold.co/151x151" },
-    { name: "Nome do Membro 7", image: "https://placehold.co/151x151" },
+    { name: "Nome do Membro 1", image: "https://placehold.co/125x125" },
+    { name: "Nome do Membro 2", image: "https://placehold.co/125x125" },
+    { name: "Nome do Membro 3", image: "https://placehold.co/125x125" },
+    { name: "Nome do Membro 4", image: "https://placehold.co/125x125" },
+    { name: "Nome do Membro 5", image: "https://placehold.co/125x125" },
+    { name: "Nome do Membro 6", image: "https://placehold.co/125x125" },
+    { name: "Nome do Membro 7", image: "https://placehold.co/125x125" },
   ];
 
   return (
@@ -33,7 +33,7 @@ const MemberCarousel = () => {
       <div className={`position-absolute mt-5 ${styles.connectingLine}`}></div>
       <div className="d-flex flex-column align-items-center mt-4">
         <div
-          className={`d-flex w-100 p-6 gap-5 overflow-hidden ${styles.carouselContainer}`}
+          className={`d-flex p-6 gap-5 overflow-hidden ${styles.carouselContainer}`}
           ref={carouselRef}
           style={{
             display: "flex",
@@ -55,7 +55,7 @@ const MemberCarousel = () => {
                   alt={member.name}
                   className="position-absolute rounded-circle"
                   style={{
-                    top: "50%",
+                    top: "40%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
                     zIndex: 2,

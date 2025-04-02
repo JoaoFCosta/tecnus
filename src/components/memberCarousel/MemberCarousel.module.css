@@ -1,6 +1,7 @@
 .carouselContainer {
   display: flex;
   scroll-behavior: smooth; /* Suaviza a rolagem */
+  width: 1900px;
 }
 
 .arrowContainerStyle {
