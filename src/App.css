@@ -13,17 +13,6 @@
   min-height: 100dvh; /* Garante que o conteúdo ocupe a altura total da tela */
 }
 
-body {
-  background: url(../src/assets/techPattern.png);
-  background-size: cover;
-  background-color: #101010;
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 100vh;
-  margin: 0;
-  overflow-x: hidden;
-}
-
 main {
   margin: 8rem 0 auto;
   flex: 1; /* Faz o conteúdo principal ocupar o espaço restante */
@@ -32,4 +21,19 @@ main {
 .App {
   color: white; /* Altera a cor do texto para branco */
   text-align: center; /* Centraliza o texto */
+}
+
+.home-bg {
+  background: url("./assets/techPattern.png") no-repeat center center/cover #101010;
+  height: 100vh;
+}
+
+.login-bg {
+  background: url("./assets/fundologin.png") no-repeat center center/cover #101010;
+  height: 100vh;
+}
+
+.default-bg {
+  background: url("./assets/techPattern.png") no-repeat center center/cover #101010;
+  height: 100vh;
 }

@@ -27,9 +27,9 @@
 .connectingLine {
   position: absolute;
   background: #f327df;
-  top: 64rem;
+  top: 57rem;
   left: 0;
   right: 0;
-  height: 9px;
+  height: 10px;
   z-index: 0;
 }
