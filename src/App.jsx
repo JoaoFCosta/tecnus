@@ -16,8 +16,8 @@ const AppContent = () => {
   const location = useLocation(); // Captura a rota atual
 
   useEffect(() => {
-    // Remove todas as classes anteriores do body
-    document.body.className = "";
+    // Remove todas as classes anteriores do body, manter apenas a de overflow-x-hidden
+    document.body.className = "overflow-x-hidden";
 
     // Adiciona a classe de fundo correspondente à página
     if (location.pathname === "/") {
