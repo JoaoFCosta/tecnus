@@ -6,7 +6,7 @@ import { PiLinkedinLogoLight } from "react-icons/pi";
 
 const Footer = () => {
   return (
-    <footer className="bg-dark text-white py-4">
+    <footer className={`text-white py-4 ${styles.footer}`}>
       <div className="container">
         <div className="row align-items-center">
           <div className="col-md-4 mb-3 mb-md-0 text-center text-md-start">
@@ -32,8 +32,8 @@ const Footer = () => {
                 <FaInstagram
                   style={{
                     borderColor: "#e263c9",
-                    width: "24px",
-                    height: "24px",
+                    width: "40px",
+                    height: "40px",
                   }}
                 />
                 <span className="visually-hidden">Instagram</span>
@@ -46,8 +46,8 @@ const Footer = () => {
                 <PiLinkedinLogoLight
                   style={{
                     borderColor: "#e263c9",
-                    width: "24px",
-                    height: "24px",
+                    width: "40px",
+                    height: "40px",
                   }}
                 />
                 <span className="visually-hidden">LinkedIn</span>
@@ -60,8 +60,8 @@ const Footer = () => {
                 <FaInstagram
                   style={{
                     borderColor: "#e263c9",
-                    width: "24px",
-                    height: "24px",
+                    width: "40px",
+                    height: "40px",
                   }}
                 />
                 <span className="visually-hidden">Instagram</span>
