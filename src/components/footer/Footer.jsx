@@ -11,10 +11,10 @@ const Footer = () => {
         <div className="row align-items-center">
           <div className="col-md-4 mb-3 mb-md-0 text-center text-md-start">
             <h2 className="fs-3 fw-bold mb-2">Tecnus Saturn</h2>
-            <p className={`small ${styles.text}`}>
+            <Link to="/terms" className={`small text-decoration-none text-white ${styles.text}`}>
               Política de privacidade e<br />
               termos de uso
-            </p>
+            </Link>
           </div>
 
           <div className="col-md-4 mb-3 mb-md-0 text-center">

@@ -1,8 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Aldrich&family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
 
 .loginContainer {
   width: 500px;
-  height: 494px;
+  height: 855px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,14 +79,13 @@ input[type="checkbox"]:enabled:checked {
 }
 
 .button:hover {
-    color: #000;
+  color: #000;
 }
 
 .text {
   font-family: "Kodchasan", sans-serif;
-  margin-top: 6rem;
 }
 
 .link {
-    font-family: 'Kodchasan', sans-serif;
+  font-family: "Kodchasan", sans-serif;
 }

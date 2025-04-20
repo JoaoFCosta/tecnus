@@ -1,13 +1,14 @@
 import React from "react";
 import styles from "./Login.module.css";
 import { Link } from "react-router";
-import { BsEnvelope } from "react-icons/bs";
+import Saturno1 from "../../assets/saturno1.png";
+import Saturno2 from "../../assets/saturno2.png";
 
 const Login = () => {
   return (
     <>
       <header
-        className={`navbar navbar-expand-lg text-light p-3 d-flex ${styles.header}`}
+        className="navbar navbar-expand-lg text-light p-3 d-flex position-fixed top-0"
       >
         <div className="container-fluid">
           <Link
@@ -20,6 +21,8 @@ const Login = () => {
       </header>
 
       <div className="container d-flex justify-content-center align-items-center">
+        <img src={Saturno1} alt="" className="position-absolute start-0 top-50"/>
+        <img src={Saturno2} alt="" className="position-absolute end-0 top-0"/>
         <div className={styles.loginContainer}>
           <h1 className="text-header-color fw-bold">Entre na sua conta</h1>
           <div>
@@ -68,7 +71,7 @@ const Login = () => {
             >
               Lembrar de mim
             </label>
-            <Link to="/" className={styles.forgotPassword}>
+            <Link to="/forgot-password" className={styles.forgotPassword}>
               Esqueci minha senha
             </Link>
           </div>
@@ -82,7 +85,7 @@ const Login = () => {
       <div className="container d-flex flex-column justify-content-center align-items-center mt-4">
         <h1 className={`fs-5 text-light ${styles.text}`}>Ainda não tem uma conta? </h1>
 
-        <Link to="/" className={`fs-5 fw-bold text-decoration-none text-light ${styles.link}`}>
+        <Link to="/create-account" className={`fs-5 fw-bold text-decoration-none text-light ${styles.link}`}>
           Faça seu cadastro gratuito
         </Link>
       </div>

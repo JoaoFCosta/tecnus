@@ -56,7 +56,9 @@ export const Home = () => {
               Cursos básicos e profissionalizantes de tecnologia e
               empreendedorismo
             </h2>
-            <button className={styles.moreBtn}>Ver mais detalhes</button>
+            <Link to="/courses">
+              <button className={styles.moreBtn}>Ver mais detalhes</button>
+            </Link>
           </div>
           <div className="col-8">
             <Carousel />

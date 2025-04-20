@@ -19,7 +19,7 @@ const Header = () => {
         </Link>
 
         <div className="d-flex align-content-center gap-4 fs-5">
-          <div className={styles.navbar}>Cursos</div>
+          <Link to="/courses" className={styles.navbar}>Cursos</Link>
           <Link to="/about" className={styles.navbar}>
             Sobre nós
           </Link>
