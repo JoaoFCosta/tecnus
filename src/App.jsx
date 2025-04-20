@@ -10,6 +10,10 @@ import { useEffect } from "react";
 import Home from "./pages/Home/Home";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import Login from "./pages/Login/Login";
+import CreateAccount from "./pages/Login/CreateAccount";
+import ForgotPassword from "./pages/Login/ForgotPassword";
+import Courses from "./pages/Courses/Courses";
+import Terms from "./pages/Terms/Terms";
 
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
@@ -19,10 +23,14 @@ const AppContent = () => {
     // Remove todas as classes anteriores do body, manter apenas a de overflow-x-hidden
     document.body.className = "overflow-x-hidden";
 
-    // Adiciona a classe de fundo correspondente à página
+    // Define a classe de fundo com base na rota
     if (location.pathname === "/") {
       document.body.classList.add("home-bg");
-    } else if (location.pathname === "/login") {
+    } else if (
+      ["/login", "/create-account", "/forgot-password"].includes(
+        location.pathname
+      )
+    ) {
       document.body.classList.add("login-bg");
     } else {
       document.body.classList.add("default-bg");
@@ -33,8 +41,12 @@ const AppContent = () => {
     <main>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/courses" element={<Courses />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/create-account" element={<CreateAccount />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </main>
   );
