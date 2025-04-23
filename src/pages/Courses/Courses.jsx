@@ -35,13 +35,22 @@ const Courses = () => {
         Noções básicas
       </h1>
 
-      <div className="d-flex flex-row justify-content-center align-items-center mt-5 mb-5">
-        <div className="d-flex flex-row align-items-center">
-          <div className={styles.ItemStyle}>
-            <img src={Drive} alt="Google Drive" />
-            <p className={styles.textStyle}>Google Drive</p>
-          </div>
+      <div className="d-flex flex-row justify-content-center align-items-center mt-5 mb-5 py-5">
+        <div>
+          <img src={Caminho} alt="" className="py-5" />
         </div>
+      </div>
+
+      <div className="container-fluid d-flex flex-row align-items-center position-absolute mt-5 ms-5 top-50">
+        <div className={styles.ItemStyle}>
+          <img src={Drive} alt="Google Drive" />
+          <p className={styles.textStyle}>Google Drive</p>
+        </div>
+        <p className={`col-3 text-start ${styles.text}`}>
+          O Google Drive é uma plataforma de armazenamento em nuvem,
+          compartilhamento e também colaboração de arquivos, sendo documentos,
+          planilhas e apresentações.
+        </p>
       </div>
 
       <Footer />

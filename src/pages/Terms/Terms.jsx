@@ -17,7 +17,7 @@ const Terms = () => {
         <p className={`text-white ${styles.text}`}>
           A sua privacidade é importante para nós. É política do Tecnus Saturn
           respeitar a sua privacidade em relação a qualquer informação sua que
-          possamos coletar no site Tecnus Saturn, e outros sites que possuímos e
+          possamos coletar no site Tecnus Saturn, e outros sites que possuímos e
           operamos. Solicitamos informações pessoais apenas quando realmente
           precisamos delas para lhe fornecer um serviço. Fazemo-lo por meios
           justos e legais, com o seu conhecimento e consentimento. Também
@@ -72,7 +72,7 @@ const Terms = () => {
           >
             Utilizamos anúncios para compensar os custos de funcionamento deste
             site e fornecer financiamento para futuros desenvolvimentos. Os
-            cookies de publicidade comportamental usados ​​por este site foram
+            cookies de publicidade comportamental usados, por este site foram
             projetados para garantir que você forneça os anúncios mais
             relevantes sempre que possível, rastreando anonimamente seus
             interesses e apresentando coisas semelhantes que possam ser do seu
@@ -108,8 +108,8 @@ const Terms = () => {
           <li
             className={`mt-2 text-white ${styles.text}`}
           >
-            B) Não difundir propaganda ou conteúdo de B) Não difundir propaganda
-            ou conteúdo de natureza racista, xenofóbica, Bet Nacional ou azar,
+            B) Não difundir propaganda
+            ou conteúdo de natureza racista, xenofóbica, Bet Nacional ou azar,
             qualquer tipo de pornografia ilegal, de apologia ao terrorismo ou
             contra os direitos humanos;
           </li>
