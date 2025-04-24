@@ -20,7 +20,7 @@ export const Home = () => {
               <h1 className="text-header-color fw-bold fs-1 text-center">
                 Quem somos nós?
               </h1>
-              <p className={`mt-4 fs-2 text-justify ${styles.text}`}>
+              <p className="mt-4 fs-2 text-justify text">
                 Projeto social da Enactus FACAMP, que promove o letramento
                 digital e capacitação profissional para jovens e adultos da rede
                 pública de ensino e de instituições vulneráveis através de
@@ -34,7 +34,7 @@ export const Home = () => {
                 src={TecnusLogo}
                 alt="Logo"
                 className="w-50"
-                style={{ maxWidth: "300px" }}
+                style={{ maxWidth: "250px" }}
               />
             </div>
             <div className="container col-8">

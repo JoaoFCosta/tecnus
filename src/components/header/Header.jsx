@@ -1,15 +1,12 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
-import styles from "./Header.module.css";
 import Profile from "../../assets/User.png";
 import { Link } from "react-router";
 
 const Header = () => {
   return (
-    <header
-      className={`navbar text-light p-3 d-flex ${styles.header}`}
-    >
+    <header className="navbar text-decoration-none text-light p-3 d-flex header">
       <div className="container-fluid">
         <Link
           className="my-3 mx-3 fs-3 fw-bold text-decoration-none text-white"
@@ -19,8 +16,13 @@ const Header = () => {
         </Link>
 
         <div className="d-flex align-content-center gap-4 fs-5">
-          <Link to="/courses" className={styles.navbar}>Cursos</Link>
-          <Link to="/about" className={styles.navbar}>
+          <Link
+            to="/courses"
+            className="navbar text-decoration-none text-white"
+          >
+            Cursos
+          </Link>
+          <Link to="/about" className="navbar text-decoration-none text-white">
             Sobre nós
           </Link>
         </div>
