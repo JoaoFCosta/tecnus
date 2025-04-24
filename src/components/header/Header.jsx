@@ -8,7 +8,7 @@ import { Link } from "react-router";
 const Header = () => {
   return (
     <header
-      className={`navbar navbar-expand-lg text-light p-3 d-flex ${styles.header}`}
+      className={`navbar text-light p-3 d-flex ${styles.header}`}
     >
       <div className="container-fluid">
         <Link

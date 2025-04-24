@@ -24,16 +24,31 @@ main {
 }
 
 .home-bg {
-  background: url("./assets/techPattern.png") no-repeat center center/cover #101010;
+  background: url("./assets/techPattern.png") no-repeat center center/cover
+    #101010;
   height: 100vh;
 }
 
 .login-bg {
-  background: url("./assets/fundologin.png") no-repeat center center/cover #101010;
+  background: url("./assets/fundologin.png") no-repeat center center/cover
+    #101010;
   height: 100vh;
 }
 
 .default-bg {
-  background: url("./assets/techPattern.png") no-repeat center center/cover #101010;
+  background: url("./assets/techPattern.png") no-repeat center center/cover
+    #101010;
   height: 100vh;
+}
+
+.footer {
+  background: linear-gradient(
+    180deg,
+    rgba(16, 16, 16, 0.12) 12%,
+    rgba(24, 21, 50, 1) 100%
+  );
+}
+
+.text {
+  font-family: "Kodchasan", sans-serif;
 }
