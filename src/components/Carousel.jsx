@@ -1,15 +1,14 @@
 import React, { useState, useRef } from "react";
-import Drive from "../../assets/Drive.png";
-import Docs from "../../assets/Docx.png";
-import Gmail from "../../assets/Gmail.png";
-import Planilhas from "../../assets/Planilhas.png";
-import Apresentacao from "../../assets/Apresentações.png";
-import Classroom from "../../assets/Classroom.png";
-import Seguranca from "../../assets/Segurança.png";
-import Excel from "../../assets/Excel.png";
-import DireitosConsumidor from "../../assets/Direitos do consumidor.png";
-import BancoDados from "../../assets/Banco de Dados.png";
-import styles from "./Carousel.module.css";
+import Drive from "../assets/Drive.png";
+import Docs from "../assets/Docx.png";
+import Gmail from "../assets/Gmail.png";
+import Planilhas from "../assets/Planilhas.png";
+import Apresentacao from "../assets/Apresentações.png";
+import Classroom from "../assets/Classroom.png";
+import Seguranca from "../assets/Segurança.png";
+import Excel from "../assets/Excel.png";
+import DireitosConsumidor from "../assets/Direitos do consumidor.png";
+import BancoDados from "../assets/Banco de Dados.png";
 
 const Carousel = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -41,84 +40,90 @@ const Carousel = () => {
     <>
       <div className="d-flex flex-column align-items-center">
         <div className="d-flex overflow-x-hidden w-100 p-6" ref={carouselRef}>
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={Drive} alt="Google Drive" />
-            <p className={styles.textStyle}>Google Drive</p>
+            <p className="textStyle">Google Drive</p>
           </div>
 
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={Docs} alt="Google Docs" />
-            <p className={styles.textStyle}>Google Docs</p>
+            <p className="textStyle">Google Docs</p>
           </div>
 
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={Gmail} alt="Gmail" />
-            <p className={styles.textStyle}>Gmail</p>
+            <p className="textStyle">Gmail</p>
           </div>
 
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={Planilhas} alt="Google Planilhas" />
-            <p className={styles.textStyle}>
+            <p className="textStyle">
               Google <br />
               Planilhas
             </p>
           </div>
 
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={Apresentacao} alt="Google Apresentações" />
-            <p className={styles.textStyle}>
+            <p className="textStyle">
               Google <br />
               Apresentações
             </p>
           </div>
 
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={Classroom} alt="Google Classroom" />
-            <p className={styles.textStyle}>
+            <p className="textStyle">
               Google <br /> Classroom
             </p>
           </div>
 
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={Seguranca} alt="Segurança e Tecnologia" />
-            <p className={styles.textStyle}>
+            <p className="textStyle">
               Segurança e <br /> Tecnologia
             </p>
           </div>
 
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={Excel} alt="Excel" />
-            <p className={styles.textStyle}>
+            <p className="textStyle">
               Excel <br /> Iniciante
             </p>
           </div>
 
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={Excel} alt="Excel" />
-            <p className={styles.textStyle}>
+            <p className="textStyle">
               Excel <br /> Intermediário
             </p>
           </div>
 
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={DireitosConsumidor} alt="Direitos do Consumidor" />
-            <p className={styles.textStyle}>
+            <p className="textStyle">
               Direitos do <br /> Consumidor
             </p>
           </div>
 
-          <div className={styles.carouselItemStyle}>
+          <div className="carouselItemStyle">
             <img src={BancoDados} alt="Excel" />
-            <p className={styles.textStyle}>
+            <p className="textStyle">
               Tecnologia e <br /> Banco de Dados
             </p>
           </div>
         </div>
-        <div className={styles.arrowContainerStyle}>
-          <button className={styles.arrowStyle} onClick={slideLeft}>
+        <div className="d-flex justify-content-between w-100 mt-2">
+          <button
+            className="bg-transparent border-none text-secondary fs-2 border-0 mx-5"
+            onClick={slideLeft}
+          >
             &#10094;
           </button>
-          <button className={styles.arrowStyle} onClick={slideRight}>
+          <button
+            className="bg-transparent border-none text-secondary fs-2 border-0 mx-5"
+            onClick={slideRight}
+          >
             &#10095;
           </button>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
-import Profile from "../../assets/User.png";
+import Profile from "../assets/User.png";
 import { Link } from "react-router";
 
 const Header = () => {

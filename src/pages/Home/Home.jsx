@@ -1,11 +1,10 @@
 import React from "react";
-import styles from "./Home.module.css";
 import TecnusLogo from "../../assets/LOGOVETO.svg";
-import Carousel from "../../components/carousel/Carousel";
+import Carousel from "../../components/Carousel";
 import { Link } from "react-router";
 
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 export const Home = () => {
   return (
@@ -39,7 +38,7 @@ export const Home = () => {
             </div>
             <div className="container col-8">
               <Link to="/about">
-                <button className={styles.aboutBtn}>Saiba mais</button>
+                <button className="aboutBtn">Saiba mais</button>
               </Link>
             </div>
           </div>
@@ -52,12 +51,12 @@ export const Home = () => {
         <div className="row d-flex flex-row">
           <div className="col-1"></div>
           <div className="col-3 d-flex flex-column text-light align-items-end justify-content-center">
-            <h2 className={`text-end ${styles.text}`}>
+            <h2 className="text-end text">
               Cursos básicos e profissionalizantes de tecnologia e
               empreendedorismo
             </h2>
             <Link to="/courses">
-              <button className={styles.moreBtn}>Ver mais detalhes</button>
+              <button className="moreBtn">Ver mais detalhes</button>
             </Link>
           </div>
           <div className="col-8">

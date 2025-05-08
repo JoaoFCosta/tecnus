@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./CreateAccount.module.css";
 import { Link } from "react-router";
 import Saturno1 from "../../assets/saturno1.png";
 import Saturno2 from "../../assets/saturno2.png";
@@ -25,13 +24,13 @@ const CreateAccount = () => {
           className="position-absolute start-0 top-50"
         />
         <img src={Saturno2} alt="" className="position-absolute end-0 top-0" />
-        <div className={styles.loginContainer}>
-          <h1 className="text-header-color fw-bold text-center">
+        <div className="loginContainer">
+          <h1 className="text-header-color fw-bold text-center mb-3">
             Crie sua conta gratuitamente
           </h1>
 
           <div>
-            <label htmlFor="name" className={`text-light ${styles.label}`}>
+            <label htmlFor="name" className="label text-light">
               Nome Completo
             </label>
             <div>
@@ -42,13 +41,13 @@ const CreateAccount = () => {
                 autoComplete="name"
                 required
                 placeholder="Digite o seu nome completo"
-                className={styles.input}
+                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="name" className={`text-light ${styles.label}`}>
+            <label htmlFor="name" className="label text-light">
               Telefone para contato
             </label>
             <div>
@@ -59,13 +58,13 @@ const CreateAccount = () => {
                 autoComplete="tel"
                 required
                 placeholder="Digite seu número"
-                className={styles.input}
+                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="email" className={`text-light ${styles.label}`}>
+            <label htmlFor="email" className="label text-light">
               E-mail
             </label>
             <div>
@@ -76,13 +75,13 @@ const CreateAccount = () => {
                 autoComplete="email"
                 required
                 placeholder="Digite o seu e-mail"
-                className={styles.input}
+                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="password" className={`text-light ${styles.label}`}>
+            <label htmlFor="password" className="label text-light">
               Senha
             </label>
             <div>
@@ -93,13 +92,13 @@ const CreateAccount = () => {
                 autoComplete="password"
                 required
                 placeholder="Digite a sua senha"
-                className={styles.input}
+                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="password" className={`text-light ${styles.label}`}>
+            <label htmlFor="password" className="label text-light">
               Confirme sua senha
             </label>
             <div>
@@ -110,23 +109,23 @@ const CreateAccount = () => {
                 autoComplete="password"
                 required
                 placeholder="Digite a sua senha"
-                className={styles.input}
+                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
               />
             </div>
           </div>
 
-          <button type="submit" className={`btn mt-4 fw-bold ${styles.button}`}>
+          <button type="submit" className="button btn mt-4 fw-bold">
             Criar
           </button>
         </div>
 
         <div className="d-flex flex-column align-items-center justify-content-center">
-          <h1 className={`text-light fs-5 mt-4 ${styles.text}`}>
+          <h1 className="textLink text-light fs-5 mt-4">
             Já tem uma conta?
           </h1>
           <Link
             to="/login"
-            className={`text-decoration-none text-light fs-5 fw-bold mb-3 ${styles.link}`}
+            className="textLink text-decoration-none text-light fs-5 fw-bold mb-3"
           >
             Fazer login
           </Link>

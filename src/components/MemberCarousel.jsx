@@ -1,19 +1,18 @@
 import React, { useRef } from "react";
-import styles from "./MemberCarousel.module.css";
-import Elipse from "../../assets//Ellipse13.png"; // Substitua pelo caminho correto da imagem
+import Elipse from "../assets/Ellipse13.png";
 
 const MemberCarousel = () => {
   const carouselRef = useRef(null);
 
   const slideLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollLeft -= 300; // Ajuste o valor para o deslocamento desejado
+      carouselRef.current.scrollLeft -= 300;
     }
   };
 
   const slideRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollLeft += 300; // Ajuste o valor para o deslocamento desejado
+      carouselRef.current.scrollLeft += 300;
     }
   };
 
@@ -30,16 +29,11 @@ const MemberCarousel = () => {
   return (
     <>
       <h1 className="text-more-color fw-bold">Nossa equipe:</h1>
-      <div className={`position-absolute mt-5 ${styles.connectingLine}`}></div>
+      <div className="position-absolute mt-5 connectingLine"></div>
       <div className="d-flex flex-column align-items-center mt-4">
         <div
-          className={`d-flex p-6 gap-5 overflow-hidden ${styles.carouselContainer}`}
+          className="d-flex p-6 gap-5 overflow-hidden carouselContainer"
           ref={carouselRef}
-          style={{
-            display: "flex",
-            overflowX: "auto", // Permite o scroll horizontal
-            scrollBehavior: "smooth", // Animação suave ao rolar
-          }}
         >
           {members.map((member, index) => (
             <div key={index} className="bg-transparent z-3 text-end">
@@ -66,11 +60,17 @@ const MemberCarousel = () => {
             </div>
           ))}
         </div>
-        <div className={styles.arrowContainerStyle}>
-          <button className={styles.arrowStyle} onClick={slideLeft}>
+        <div className="d-flex justify-content-between w-100 mt-3">
+          <button
+            className="bg-transparent border-none text-secondary fs-2 border-0 mx-5"
+            onClick={slideLeft}
+          >
             &#10094;
           </button>
-          <button className={styles.arrowStyle} onClick={slideRight}>
+          <button
+            className="bg-transparent border-none text-secondary fs-2 border-0 mx-5"
+            onClick={slideRight}
+          >
             &#10095;
           </button>
         </div>

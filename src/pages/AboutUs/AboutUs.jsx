@@ -1,9 +1,9 @@
 import React from "react";
 import Principios from "../../assets/Group58.png";
-import MemberCarousel from "../../components/memberCarousel/MemberCarousel";
+import MemberCarousel from "../../components/MemberCarousel";
 
-import Header from "../../components/header/Header";
-import Footer from "../../components/footer/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 const AboutUs = () => {
   return (

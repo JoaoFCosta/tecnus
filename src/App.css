@@ -66,3 +66,142 @@ main {
   right: 0;
   z-index: 1000;
 }
+
+.ItemStyle {
+  min-width: 300px;
+  width: 200px;
+  margin: 0 10px;
+  background: #2d2d2d;
+  border: 4px solid rgba(32, 115, 143, 1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  flex-grow: auto;
+}
+
+.aboutBtn {
+  font-family: "Kodchasan", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  background: linear-gradient(
+    90deg,
+    rgba(39, 157, 197, 1) 25%,
+    rgba(187, 80, 177, 1) 75%
+  );
+  padding: 2px 15px;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+}
+
+.moreBtn {
+  font-family: "Kodchasan", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  background: linear-gradient(
+    90deg,
+    rgba(39, 157, 197, 1) 25%,
+    rgba(187, 80, 177, 1) 75%
+  );
+  padding: 2px 60px;
+  border-radius: 5px;
+  border: none;
+  text-decoration: none;
+}
+
+.carouselItemStyle {
+  min-width: 300px;
+  width: 200px;
+  margin: 0 10px;
+  background: #2d2d2d;
+  border: 4px solid #181532;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  flex-grow: auto;
+}
+
+.textStyle {
+  font-family: "Kodchasan", sans-serif;
+  color: #dee2e6;
+  font-size: 2rem;
+  text-align: center;
+  justify-content: center;
+}
+
+.carouselContainer {
+  display: flex;
+  scroll-behavior: smooth; /* Suaviza a rolagem */
+  width: 1900px;
+}
+
+.connectingLine {
+  position: absolute;
+  background: #f327df;
+  top: 57rem;
+  left: 0;
+  right: 0;
+  height: 10px;
+  z-index: 0;
+}
+
+.loginContainer {
+  width: 500px;
+  height: 855px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(23, 23, 23, 0.8);
+  backdrop-filter: blur(10px);
+  border: 6px solid #181532;
+  border-radius: 17px;
+}
+
+.label {
+  font-family: "Kodchasan", sans-serif;
+  font-size: 20px;
+}
+
+.input {
+  font-family: "Kodchasan", sans-serif;
+  width: 433px;
+  height: 69px;
+  color: #4b4b4b;
+  font-size: 20px;
+}
+
+.input:focus {
+  outline: none;
+  border: 3px solid #279dc5;
+}
+
+.button {
+  font-family: "Kodchasan", sans-serif;
+  width: 432px;
+  height: 46px;
+  background: linear-gradient(
+    90deg,
+    rgba(39, 157, 197, 1) 25%,
+    rgba(187, 80, 177, 1) 75%
+  );
+  border-radius: 12x;
+  border: none;
+  color: #000;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #000;
+}
+
+.textLink {
+  font-family: "Kodchasan", sans-serif;
+}
