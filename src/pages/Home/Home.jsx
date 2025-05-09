@@ -19,7 +19,7 @@ export const Home = () => {
               <h1 className="text-header-color fw-bold fs-1 text-center">
                 Quem somos nós?
               </h1>
-              <p className="mt-4 fs-2 text-justify text">
+              <p className="mt-4 fs-2 text-justify textLink">
                 Projeto social da Enactus FACAMP, que promove o letramento
                 digital e capacitação profissional para jovens e adultos da rede
                 pública de ensino e de instituições vulneráveis através de
@@ -50,7 +50,7 @@ export const Home = () => {
         <div className="row d-flex flex-row">
           <div className="col-1"></div>
           <div className="col-3 d-flex flex-column text-light align-items-end justify-content-center">
-            <h2 className="text-end text">
+            <h2 className="text-end textLink">
               Cursos básicos e profissionalizantes de tecnologia e
               empreendedorismo
             </h2>

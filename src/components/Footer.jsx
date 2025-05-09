@@ -10,14 +10,14 @@ const Footer = () => {
         <div className="row align-items-center">
           <div className="col-md-4 mb-3 mb-md-0 text-center text-md-start">
             <h2 className="fs-3 fw-bold mb-2">Tecnus Saturn</h2>
-            <Link to="/terms" className="small text-decoration-none text-white text">
+            <Link to="/terms" className="small text-decoration-none text-white textLink">
               Política de privacidade e<br />
               termos de uso
             </Link>
           </div>
 
           <div className="col-md-4 mb-3 mb-md-0 text-center">
-            <p className="mb-3 text">
+            <p className="mb-3 textLink">
               Entre em contato conosco pelas
               <br />
               redes sociais
@@ -69,8 +69,8 @@ const Footer = () => {
           </div>
 
           <div className="col-md-4 text-center text-md-end">
-            <p className="fw-medium text">Enactus- FACAMP</p>
-            <p className="small text">
+            <p className="fw-medium textLink">Enactus - FACAMP</p>
+            <p className="small textLink">
               Av. Alan Turing, 805 - Cidade
               <br />
               Universitária, Campinas - SP, 13083-898

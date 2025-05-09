@@ -1,9 +1,28 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
 import Saturno1 from "../../assets/saturno1.png";
 import Saturno2 from "../../assets/saturno2.png";
 
 const CreateAccount = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleCreateAccount = () => {
+    if (password !== confirmPassword) {
+      alert("As senhas não coincidem!");
+      return;
+    }
+
+    const user = { name, email, phone, password };
+    localStorage.setItem("user", JSON.stringify(user));
+    alert("Conta criada com sucesso!");
+    navigate("/login");
+  };
+
   return (
     <>
       <div className="container-fluid">
@@ -42,23 +61,8 @@ const CreateAccount = () => {
                 required
                 placeholder="Digite o seu nome completo"
                 className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="name" className="label text-light">
-              Telefone para contato
-            </label>
-            <div>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
-                required
-                placeholder="Digite seu número"
-                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
           </div>
@@ -76,6 +80,27 @@ const CreateAccount = () => {
                 required
                 placeholder="Digite o seu e-mail"
                 className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="phone" className="label text-light">
+              Telefone para Contato
+            </label>
+            <div>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                required
+                placeholder="Digite o seu telefone"
+                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
             </div>
           </div>
@@ -93,28 +118,36 @@ const CreateAccount = () => {
                 required
                 placeholder="Digite a sua senha"
                 className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="password" className="label text-light">
-              Confirme sua senha
+            <label htmlFor="confirmPassword" className="label text-light">
+              Confirmar Senha
             </label>
             <div>
               <input
-                id="password"
-                name="password"
+                id="confirmPassword"
+                name="confirmPassword"
                 type="password"
                 autoComplete="password"
                 required
-                placeholder="Digite a sua senha"
+                placeholder="Confirme a sua senha"
                 className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </div>
           </div>
 
-          <button type="submit" className="button btn mt-4 fw-bold">
+          <button
+            type="button"
+            className="button btn mt-4 fw-bold"
+            onClick={handleCreateAccount}
+          >
             Criar
           </button>
         </div>

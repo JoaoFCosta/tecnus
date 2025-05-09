@@ -22,7 +22,7 @@ const AboutUs = () => {
 
         <div className="d-flex justify-content-center">
           <p
-            className="text-light w-75 mt-5 mb-5 d-flex text-center fs-4 text"
+            className="text-light w-75 mt-5 mb-5 d-flex text-center fs-4 textLink"
           >
             Tecnus vem da junção das palavras: Tecnologia + us ( nós - em
             inglês), ou seja tecnus significa a tecnologia que nos une. Saturn
@@ -35,7 +35,7 @@ const AboutUs = () => {
         <h1 className="fw-bold text-more-color mt-5">Trajetória do projeto:</h1>
         <div className="d-flex justify-content-center mb-5">
           <p
-            className="text-light w-75 mt-4 mb-5 d-flex text-light fs-4 text"
+            className="text-light w-75 mt-4 mb-5 d-flex text-light fs-4 textLink"
           >
             O projeto Tecnus Saturn, criado em 2021 e reformulado em 2024, visa
             contornar uma realidade de desafios educacionais, que têm
@@ -86,7 +86,7 @@ const AboutUs = () => {
         </h1>
         <div className="d-flex justify-content-center text-center mb-5">
           <p
-            className="text-light w-75 mt-4 mb-5 d-flex text-light fs-4 text"
+            className="text-light w-75 mt-4 mb-5 d-flex text-light fs-4 textLink"
           >
             Atualmente, o Brasil enfrenta uma realidade em que muitos jovens se
             encontram desencorajados, sem oportunidades, e afastados tanto do

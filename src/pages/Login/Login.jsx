@@ -1,9 +1,25 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
 import Saturno1 from "../../assets/saturno1.png";
 import Saturno2 from "../../assets/saturno2.png";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (user && user.email === email && user.password === password) {
+      alert("Login realizado com sucesso!");
+      localStorage.setItem("isLoggedIn", true);
+      navigate("/");
+    } else {
+      alert("Credenciais inválidas!");
+    }
+  };
+
   return (
     <>
       <header className="navbar navbar-expand-lg text-light p-3 d-flex position-fixed top-0">
@@ -39,6 +55,8 @@ const Login = () => {
                 required
                 placeholder="Digite o seu e-mail"
                 className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -56,6 +74,8 @@ const Login = () => {
                 required
                 placeholder="Digite a sua senha"
                 className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
           </div>
@@ -77,7 +97,11 @@ const Login = () => {
             </Link>
           </div>
 
-          <button type="submit" className="button btn mt-4 fw-bold">
+          <button
+            type="button"
+            className="button btn mt-4 fw-bold"
+            onClick={handleLogin}
+          >
             Entrar
           </button>
         </div>
