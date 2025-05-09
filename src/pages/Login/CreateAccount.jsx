@@ -24,7 +24,7 @@ const CreateAccount = () => {
           className="position-absolute start-0 top-50"
         />
         <img src={Saturno2} alt="" className="position-absolute end-0 top-0" />
-        <div className="loginContainer">
+        <div className="createAccContainer">
           <h1 className="text-header-color fw-bold text-center mb-3">
             Crie sua conta gratuitamente
           </h1>

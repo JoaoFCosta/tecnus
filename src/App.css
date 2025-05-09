@@ -151,7 +151,7 @@ main {
   z-index: 0;
 }
 
-.loginContainer {
+.createAccContainer {
   width: 500px;
   height: 855px;
   display: flex;
@@ -203,5 +203,56 @@ main {
 }
 
 .textLink {
+  font-family: "Kodchasan", sans-serif;
+}
+
+.forgotPassContainer {
+  width: 500px;
+  height: 494px;
+  background: rgba(23, 23, 23, 0.8);
+  backdrop-filter: blur(10px);
+  border: 6px solid #181532;
+  border-radius: 17px;
+}
+
+.warning {
+  font-family: "Kodchasan", sans-serif;
+  font-size: 6rem;
+  color: #4b4b4b;
+  border-left: 4px solid #4b4b4b;
+  margin-left: 2rem;
+}
+
+.warningText {
+  margin-top: 15px;
+  font-family: "Kodchasan", sans-serif;
+  font-size: 1rem;
+  text-align: start;
+}
+
+.loginContainer {
+  width: 500px;
+  height: 494px;
+  background: rgba(23, 23, 23, 0.8);
+  backdrop-filter: blur(10px);
+  border: 6px solid #181532;
+  border-radius: 17px;
+}
+
+.forgotPassLink {
+  font-family: "Kodchasan", sans-serif;
+}
+
+input[type="checkbox"] {
+  background-color: transparent !important;
+  color: white;
+}
+
+input[type="checkbox"]:enabled:checked {
+  background-color: #bb50b1 !important;
+  color: white;
+}
+
+.checkboxLabel {
   font-family: "Kodchasan", sans-serif;
 }

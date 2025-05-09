@@ -32,8 +32,7 @@ export const Home = () => {
               <img
                 src={TecnusLogo}
                 alt="Logo"
-                className="w-50"
-                style={{ maxWidth: "250px" }}
+                className="w-25"
               />
             </div>
             <div className="container col-8">
