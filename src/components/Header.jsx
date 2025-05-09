@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.js";
 import Profile from "../assets/User.png";
 import { Link } from "react-router";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     // Verifica se o usuário está logado no localStorage
-    const user = localStorage.getItem("user");
-    setIsLoggedIn(!!user);
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setIsLoggedIn(true);
+      setUserName(user.name); // Recupera o nome do usuário
+    }
   }, []);
 
   return (
@@ -40,7 +42,7 @@ const Header = () => {
         <Link to="/login" className="text-decoration-none text-white">
           <div className="d-flex align-items-center fs-5">
             <span className="text-white me-2">
-              {isLoggedIn ? "Bem-vindo!" : "Olá, visitante"}
+              {isLoggedIn ? `Olá, ${userName.split(" ")[0]}!` : "Olá, visitante"}
             </span>
             <img src={Profile} alt="" className="w-25" />
           </div>
