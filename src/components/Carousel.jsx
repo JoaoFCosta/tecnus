@@ -8,8 +8,7 @@ import Classroom from "../assets/Classroom.png";
 import Seguranca from "../assets/Segurança.png";
 import Excel from "../assets/Excel.png";
 import DireitosConsumidor from "../assets/Direitos do consumidor.png";
-import BancoDados from "../assets/Banco de Dados.png";
-
+import BancoDados from "../assets/Banco de dados.png"
 const Carousel = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const carouselRef = useRef(null);
