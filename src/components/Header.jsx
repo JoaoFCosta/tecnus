@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import Profile from "../assets/User.png";
-import { Link, useNavigate } from "react-router"; // Corrigido: useRouter -> useNavigate
+import { Link, useNavigate } from "react-router";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
   const [showMenu, setShowMenu] = useState(false);
-  const navigate = useNavigate();
   const menuRef = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -17,7 +17,6 @@ const Header = () => {
     }
   }, []);
 
-  // Fechar menu ao clicar fora
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -45,16 +44,18 @@ const Header = () => {
   };
 
   return (
-    <header className="navbar text-light p-3 d-flex header">
-      <div className="container-fluid d-flex justify-content-between align-items-center">
+    <header className="header navbar fixed-top text-light p-3">
+      <div className="container-fluid d-flex align-items-center justify-content-between">
+        {/* Logo */}
         <Link
-          className="my-3 mx-3 fs-3 fw-bold text-decoration-none text-white"
+          className="fs-3 fw-bold text-decoration-none text-white"
           to="/"
         >
           Tecnus Saturn
         </Link>
 
-        <div className="d-flex align-items-center gap-4 fs-5">
+        {/* Links centralizados */}
+        <div className="d-none d-lg-flex flex-grow-1 justify-content-center gap-4 fs-5">
           {isLoggedIn && (
             <Link to="/courses" className="text-decoration-none text-white textLink">
               Cursos
@@ -65,22 +66,22 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className="position-relative" ref={menuRef}>
-          <div
-            className="d-flex align-items-center fs-5 cursor-pointer"
+        {/* Perfil */}
+        <div className="d-flex align-items-center position-relative" ref={menuRef}>
+          <span className="text-white me-2">
+            {isLoggedIn ? `Olá, ${userName.split(" ")[0]}!` : "Olá, visitante"}
+          </span>
+          <img
+            src={Profile}
+            alt="Perfil"
             onClick={handleProfileClick}
-            style={{ cursor: "pointer" }}
-          >
-            <span className="text-white me-2">
-              {isLoggedIn ? `Olá, ${userName.split(" ")[0]}!` : "Olá, visitante"}
-            </span>
-            <img src={Profile} alt="Perfil" className="rounded-circle" width={40} height={40} />
-          </div>
-
+            className="rounded-circle cursor-pointer"
+            width={40}
+            height={40}
+          />
           {isLoggedIn && showMenu && (
             <div
-              className="position-absolute end-0 mt-2 bg-white text-dark rounded shadow p-2"
-              style={{ zIndex: 1000 }}
+              className="position-absolute top-100 end-0 mt-2 bg-white text-dark rounded shadow p-2 z-3"
             >
               <Link to="/profile" className="dropdown-item text-dark">
                 Perfil
