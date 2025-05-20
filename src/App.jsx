@@ -15,6 +15,8 @@ import ForgotPassword from "./pages/Login/ForgotPassword";
 import Courses from "./pages/Courses/Courses";
 import Terms from "./pages/Terms/Terms";
 
+import GoogleDrive from "./pages/Courses/GoogleDrive";
+
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
   const location = useLocation(); // Captura a rota atual
@@ -47,6 +49,8 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+
+        <Route path="/google-drive" element={<GoogleDrive />} />
       </Routes>
     </main>
   );

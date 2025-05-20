@@ -11,6 +11,8 @@ import Excel from "../../assets/Excel.png";
 import DireitosConsumidor from "../../assets/Direitos do consumidor.png";
 import BancoDados from "../../assets/Banco de dados.png";
 
+import { Link } from "react-router";
+
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
@@ -73,7 +75,9 @@ const Courses = () => {
                     5 aulas
                   </span>
                 </div>
-                <button className="btn moreBtn">Ver curso</button>
+                <Link to={"/google-drive"}>
+                  <button className="btn moreBtn">Ver curso</button>
+                </Link>
               </div>
             </div>
           </div>
@@ -432,8 +436,8 @@ const Courses = () => {
               <div className="col">
                 <p class="service-description text-start textLink text-light fs-4 mt-4">
                   Aborda sobre relações de consumo, travadas entre fornecedores
-                  (quem disponibiliza produtos ou serviços ao mercado)
-                  e consumidores (quem consome).
+                  (quem disponibiliza produtos ou serviços ao mercado) e
+                  consumidores (quem consome).
                 </p>
               </div>
             </div>
