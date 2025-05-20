@@ -98,7 +98,7 @@ const Header = () => {
             height={40}
           />
           {isLoggedIn && showMenu && (
-            <div className="position-absolute top-100 end-0 mt-2 bg-gray-700 text-light rounded shadow p-2 z-3">
+            <div className="position-absolute top-100 end-0 mt-2 bg-gray-700 text-light rounded-4 py-4 shadow p-2 z-3">
               <span className="textLink text-gray-400">Conta</span>
               <Link
                 to="/profile"
@@ -110,7 +110,7 @@ const Header = () => {
 
               <Link
                 to="/courses"
-                className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4 mt-2"
+                className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4 mt-2 mb-2"
               >
                 <MdOndemandVideo className="fs-4 mx-2 me-4" />
                 Meus Cursos
