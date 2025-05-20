@@ -118,7 +118,9 @@ const Courses = () => {
                   1 aula
                 </span>
               </div>
-              <button class="btn moreBtn">Ver curso</button>
+              <Link to={"/google-docs"}>
+                <button class="btn moreBtn">Ver curso</button>
+              </Link>
             </div>
           </div>
         </div>

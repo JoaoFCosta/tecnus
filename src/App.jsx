@@ -14,8 +14,8 @@ import CreateAccount from "./pages/Login/CreateAccount";
 import ForgotPassword from "./pages/Login/ForgotPassword";
 import Courses from "./pages/Courses/Courses";
 import Terms from "./pages/Terms/Terms";
-
 import GoogleDrive from "./pages/Courses/GoogleDrive";
+import GoogleDocs from "./pages/Courses/GoogleDocs";
 
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
@@ -49,8 +49,8 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-
         <Route path="/google-drive" element={<GoogleDrive />} />
+        <Route path="/google-docs" element={<GoogleDocs />} />
       </Routes>
     </main>
   );

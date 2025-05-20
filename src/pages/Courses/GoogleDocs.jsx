@@ -3,64 +3,45 @@ import { useNavigate } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaCirclePlay } from "react-icons/fa6";
 
-import Drive from "../../assets/Drive.png";
+import Docs from "../../assets/Docx.png";
+
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-const GoogleDrive = () => {
+const GoogleDocs = () => {
   const navigate = useNavigate();
 
   const aulas = [
     {
       id: 1,
       titulo: "Tornar Público",
-      duracao: "10 minutos",
-    },
-    {
-      id: 2,
-      titulo: "Acesso Offline",
-      duracao: "10 minutos",
-    },
-    {
-      id: 3,
-      titulo: "Gmail e Google Drive",
-      duracao: "11 minutos",
-    },
-    {
-      id: 4,
-      titulo: "Tradutor",
-      duracao: "10 minutos",
-    },
-    {
-    id: 5,
-    titulo: "Atalhos",
-    duracao: "10 minutos",
+      duracao: "12 minutos",
     },
   ];
-
   return (
     <>
       <Header />
 
       <h1 className="text-center fw-bold text-header-color mb-5">
-        Google Drive
+        Google Docs <br />
+        (documentos)
       </h1>
 
       <div className="container d-flex justify-content-center gap-5">
         <div className="courseLogo">
-          <img src={Drive} alt="Google Drive" />
-          <span className="textLink text-light fs-2 fw-bold">Google Drive</span>
+          <img src={Docs} alt="Google Drive" />
+          <span className="textLink text-light fs-2 fw-bold">Google Docs</span>
         </div>
 
         <p className="textLink text-light col-6 fs-3 mt-3">
-          O Google Drive é uma plataforma de armazenamento em nuvem,
-          compartilhamento e também colaboração de arquivos, sendo documentos,
-          planilhas e apresentações.
+          O Google Docs é voltado para a produção textual de diversos arquivos,
+          como cartas, currículos, boletins informativos, brochuras, relatórios,
+          planos de aula, etc.
           <br />
           <br />
-          <strong>Duração:</strong> 51 minutos e 54 segundos
+          <strong>Duração:</strong> 12 minutos
           <br />
-          <strong>Professor:</strong> Claudinho Buchecha
+          <strong>Professor:</strong> Havaiana Alegítima
         </p>
       </div>
 
@@ -84,7 +65,7 @@ const GoogleDrive = () => {
             <div
               className="position-relative playVideo"
               style={{ width: 320, height: 180, cursor: "pointer" }}
-              onClick={() => navigate(`/curso/google-drive/aula/${aula.id}`)}
+              onClick={() => navigate(`/curso/google-docs/aula/${aula.id}`)}
             >
               <FaCirclePlay className="position-absolute top-50 start-50 translate-middle text-light fs-1" />
             </div>
@@ -97,7 +78,7 @@ const GoogleDrive = () => {
             <div className="d-flex flex-column align-items-end">
               <button
                 className="btn moreBtn fs-5 mx-5 h-25"
-                onClick={() => navigate(`/curso/google-drive/aula/${aula.id}`)}
+                onClick={() => navigate(`/curso/google-docs/aula/${aula.id}`)}
               >
                 Assistir aula
               </button>
@@ -115,4 +96,4 @@ const GoogleDrive = () => {
   );
 };
 
-export default GoogleDrive;
+export default GoogleDocs;
