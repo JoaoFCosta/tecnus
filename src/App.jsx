@@ -16,6 +16,7 @@ import Courses from "./pages/Courses/Courses";
 import Terms from "./pages/Terms/Terms";
 import GoogleDrive from "./pages/Courses/GoogleDrive";
 import GoogleDocs from "./pages/Courses/GoogleDocs";
+import GoogleGmail from "./pages/Courses/GoogleGmail";
 
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
@@ -51,6 +52,7 @@ const AppContent = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/google-drive" element={<GoogleDrive />} />
         <Route path="/google-docs" element={<GoogleDocs />} />
+        <Route path="/google-gmail" element={<GoogleGmail />} />
       </Routes>
     </main>
   );
