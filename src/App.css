@@ -18,11 +18,6 @@ main {
   flex: 1; /* Faz o conteúdo principal ocupar o espaço restante */
 }
 
-.App {
-  color: white; /* Altera a cor do texto para branco */
-  text-align: center; /* Centraliza o texto */
-}
-
 .home-bg {
   background: url("./assets/techPattern.png") no-repeat center center/cover
     #101010;
@@ -49,52 +44,22 @@ main {
   );
 }
 
-.navbar {
-  font-family: "Kodchasan", sans-serif;
-}
-
 .header {
   background: rgba(16, 16, 16, 0.5);
   backdrop-filter: blur(10px);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-.ItemStyle {
-  min-width: 300px;
-  width: 200px;
-  margin: 0 10px;
-  background: #2d2d2d;
-  border: 4px solid rgba(32, 115, 143, 1);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  flex-grow: auto;
 }
 
 .aboutBtn {
-  font-family: "Kodchasan", sans-serif;
   font-size: 1.2rem;
-  font-weight: bolder;
   background: linear-gradient(
     90deg,
     rgba(39, 157, 197, 1) 25%,
     rgba(187, 80, 177, 1) 75%
   );
   padding: 2px 15px;
-  border-radius: 5px;
-  border: none;
-  text-decoration: none;
 }
 
 .moreBtn {
-  font-family: "Kodchasan", sans-serif;
   font-size: 1.5rem;
   font-weight: bolder;
   background: linear-gradient(
@@ -103,49 +68,27 @@ main {
     rgba(187, 80, 177, 1) 75%
   );
   padding: 2px 60px;
-  border-radius: 5px;
-  border: none;
-  text-decoration: none;
-  color: black;
 }
 
 .carouselItemStyle {
-  min-width: 300px;
-  width: 200px;
+  min-width: 350px;
+  height: 300px;
   margin: 0 10px;
   background: #2d2d2d;
   border: 4px solid #181532;
   border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
   flex-grow: auto;
 }
 
-.textStyle {
-  font-family: "Kodchasan", sans-serif;
-  color: #dee2e6;
-  font-size: 2rem;
-  text-align: center;
-  justify-content: center;
-}
-
 .carouselContainer {
-  display: flex;
   scroll-behavior: smooth; /* Suaviza a rolagem */
   width: 1900px;
 }
 
 .connectingLine {
-  position: absolute;
   background: #f327df;
   top: 57rem;
-  left: 0;
-  right: 0;
   height: 10px;
-  z-index: 0;
 }
 
 .createAccContainer {
@@ -161,13 +104,7 @@ main {
   border-radius: 17px;
 }
 
-.label {
-  font-family: "Kodchasan", sans-serif;
-  font-size: 20px;
-}
-
 .input {
-  font-family: "Kodchasan", sans-serif;
   width: 433px;
   height: 69px;
   color: #4b4b4b;
@@ -179,28 +116,11 @@ main {
   border: 3px solid #279dc5;
 }
 
-.button {
-  font-family: "Kodchasan", sans-serif;
-  width: 432px;
-  height: 46px;
-  background: linear-gradient(
-    90deg,
-    rgba(39, 157, 197, 1) 25%,
-    rgba(187, 80, 177, 1) 75%
-  );
-  border-radius: 12x;
-  border: none;
-  color: #000;
-  font-size: 25px;
-  cursor: pointer;
-}
-
-.button:hover {
-  color: #000;
-}
-
 .textLink {
   font-family: "Kodchasan", sans-serif;
+  color: #dee2e6;
+  text-align: center;
+  justify-content: center;
 }
 
 .forgotPassContainer {
@@ -213,18 +133,9 @@ main {
 }
 
 .warning {
-  font-family: "Kodchasan", sans-serif;
   font-size: 6rem;
   color: #4b4b4b;
   border-left: 4px solid #4b4b4b;
-  margin-left: 2rem;
-}
-
-.warningText {
-  margin-top: 15px;
-  font-family: "Kodchasan", sans-serif;
-  font-size: 1rem;
-  text-align: start;
 }
 
 .loginContainer {
@@ -236,22 +147,9 @@ main {
   border-radius: 17px;
 }
 
-.forgotPassLink {
-  font-family: "Kodchasan", sans-serif;
-}
-
-input[type="checkbox"] {
-  background-color: transparent !important;
-  color: white;
-}
-
 input[type="checkbox"]:enabled:checked {
   background-color: #bb50b1 !important;
   color: white;
-}
-
-.checkboxLabel {
-  font-family: "Kodchasan", sans-serif;
 }
 
 .courseItem {
@@ -261,12 +159,6 @@ input[type="checkbox"]:enabled:checked {
   margin: 0 10px;
   background: #2d2d2d;
   border: 4px solid #181532;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
   flex-grow: auto;
 }
 
@@ -275,18 +167,11 @@ input[type="checkbox"]:enabled:checked {
 }
 
 .courseLogo {
-  min-width: 300px;
+  min-width: 350px;
   height: 344px;
   width: 263px;
   margin: 0 10px;
   background: #2d2d2d;
-  border: 4px solid #181532;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
   flex-grow: auto;
 }
 
@@ -295,8 +180,4 @@ input[type="checkbox"]:enabled:checked {
   height: 150px;
   background: #2d2d2d;
   border: 4px solid #181532;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

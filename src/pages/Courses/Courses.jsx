@@ -146,7 +146,7 @@ const Courses = () => {
         "Aborda sobre relações de consumo, travadas entre fornecedores (quem disponibiliza produtos ou serviços ao mercado) e consumidores (quem consome).",
     },
     {
-      nome: "Banco de Dados",
+      nome: "Tecnologia e Banco de Dados",
       tipo: "profissional",
       imagem: BancoDados,
       aulas: [
@@ -211,7 +211,7 @@ const Courses = () => {
               <div className="card-body">
                 <div className="row">
                   <div className="col">
-                    <div className="courseItem d-flex flex-column mb-3">
+                    <div className="courseItem d-flex flex-column align-items-center justify-content-center rounded-2 p-2 mb-3">
                       <img src={curso.imagem} alt={curso.nome} width="150" />
                       <span className="textLink text-center text-light ms-2 fs-3">
                         {curso.nome}
@@ -234,7 +234,7 @@ const Courses = () => {
                     </span>
                   </div>
                   <Link to={curso.link}>
-                    <button className="btn moreBtn">Ver curso</button>
+                    <button className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2">Ver curso</button>
                   </Link>
                 </div>
               </div>
@@ -263,7 +263,7 @@ const Courses = () => {
               <div className="card-body">
                 <div className="row">
                   <div className="col">
-                    <div className="courseItem d-flex flex-column mb-3">
+                    <div className="courseItem d-flex flex-column align-items-center justify-content-center rounded-2 p-2 mb-3">
                       <img src={curso.imagem} alt={curso.nome} width="150" />
                       <span className="textLink text-center text-light ms-2 fs-3">
                         {curso.nome}
@@ -286,7 +286,7 @@ const Courses = () => {
                     </span>
                   </div>
                   <Link to={curso.link}>
-                    <button className="btn moreBtn">Ver curso</button>
+                    <button className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2">Ver curso</button>
                   </Link>
                 </div>
               </div>

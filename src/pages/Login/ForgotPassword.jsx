@@ -31,7 +31,7 @@ const ForgotPassword = () => {
           </h1>
 
           <div>
-            <label htmlFor="name" className="label text-light">
+            <label htmlFor="name" className="label textLink fs-4 text-light">
               E-mail
             </label>
             <div>
@@ -42,14 +42,14 @@ const ForgotPassword = () => {
                 autoComplete="email"
                 required
                 placeholder="Digite o seu e-mail"
-                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
               />
             </div>
           </div>
 
           <div className="d-flex text-center mt-3">
-            <IoWarningOutline className="warning" />
-            <span className="warningText text-light fw-bold ms-2">
+            <IoWarningOutline className="warning ms-4" />
+            <span className="warningText textLink text-light fw-bold ms-2 mt-3 text-start">
               Um link será enviado para o seu e-mail para que você possa
               redefinir sua senha e acessar a sua conta!
             </span>

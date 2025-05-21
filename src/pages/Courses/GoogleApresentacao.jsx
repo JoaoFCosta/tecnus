@@ -40,14 +40,14 @@ const GoogleApresentacao = () => {
       </h1>
 
       <div className="container d-flex justify-content-center gap-5">
-        <div className="courseLogo">
+        <div className="courseLogo badge d-flex flex-column align-items-center justify-content-center p-6 rounded-2">
           <img src={Apresentacao} alt="Google Apresentações" />
-          <span className="textLink text-light fs-2 fw-bold text-center">
+          <span className="textLink text-light fs-5 fw-bold text-center">
             Google Apresentações
           </span>
         </div>
 
-        <p className="textLink text-light col-6 fs-3 mt-3">
+        <p className="textLink text-light col-6 fs-3 mt-3 text-start">
           O google apresentações permite criar e formatar slides em nuvem, onde
           todas as mudanças que você fizer serão salvas. Você pode editar um
           modelo pronto ou criar um novo.
@@ -77,7 +77,7 @@ const GoogleApresentacao = () => {
         <React.Fragment key={aula.id}>
           <div className="container mt-3 d-flex justify-content-between gap-5 flex-row">
             <div
-              className="position-relative playVideo"
+              className="position-relative playVideo d-flex align-items-center justify-content-center rounded-2"
               style={{ width: 320, height: 180, cursor: "pointer" }}
               onClick={() =>
                 navigate(`/curso/google-apresentacoes/aula/${aula.id}`)
@@ -93,7 +93,7 @@ const GoogleApresentacao = () => {
             </span>
             <div className="d-flex flex-column align-items-end">
               <button
-                className="btn moreBtn fs-5 mx-5 h-25"
+                className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2 fs-5 mx-5 h-25"
                 onClick={() =>
                   navigate(`/curso/google-apresentacoes/aula/${aula.id}`)
                 }

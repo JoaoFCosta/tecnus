@@ -49,7 +49,7 @@ const CreateAccount = () => {
           </h1>
 
           <div>
-            <label htmlFor="name" className="label text-light">
+            <label htmlFor="name" className="label textLink fs-4 text-light">
               Nome Completo
             </label>
             <div>
@@ -60,7 +60,7 @@ const CreateAccount = () => {
                 autoComplete="name"
                 required
                 placeholder="Digite o seu nome completo"
-                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -68,7 +68,7 @@ const CreateAccount = () => {
           </div>
 
           <div>
-            <label htmlFor="email" className="label text-light">
+            <label htmlFor="email" className="label textLink fs-4 text-light">
               E-mail
             </label>
             <div>
@@ -79,7 +79,7 @@ const CreateAccount = () => {
                 autoComplete="email"
                 required
                 placeholder="Digite o seu e-mail"
-                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -87,7 +87,7 @@ const CreateAccount = () => {
           </div>
 
           <div>
-            <label htmlFor="phone" className="label text-light">
+            <label htmlFor="phone" className="label textLink fs-4 text-light">
               Telefone para Contato
             </label>
             <div>
@@ -98,7 +98,7 @@ const CreateAccount = () => {
                 autoComplete="tel"
                 required
                 placeholder="Digite o seu telefone"
-                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
@@ -106,7 +106,7 @@ const CreateAccount = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="label text-light">
+            <label htmlFor="password" className="label textLink fs-4 text-light">
               Senha
             </label>
             <div>
@@ -117,7 +117,7 @@ const CreateAccount = () => {
                 autoComplete="password"
                 required
                 placeholder="Digite a sua senha"
-                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -125,7 +125,7 @@ const CreateAccount = () => {
           </div>
 
           <div>
-            <label htmlFor="confirmPassword" className="label text-light">
+            <label htmlFor="confirmPassword" className="label textLink fs-4 text-light">
               Confirmar Senha
             </label>
             <div>
@@ -136,7 +136,7 @@ const CreateAccount = () => {
                 autoComplete="password"
                 required
                 placeholder="Confirme a sua senha"
-                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />

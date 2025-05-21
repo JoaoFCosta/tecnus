@@ -43,7 +43,7 @@ const Login = () => {
         <div className="loginContainer d-flex flex-column justify-content-center align-items-center">
           <h1 className="text-header-color fw-bold">Entre na sua conta</h1>
           <div>
-            <label htmlFor="email" className="label text-light">
+            <label htmlFor="email" className="label textLink fs-4 text-light">
               E-mail
             </label>
             <div>
@@ -54,7 +54,7 @@ const Login = () => {
                 autoComplete="email"
                 required
                 placeholder="Digite o seu e-mail"
-                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -62,7 +62,7 @@ const Login = () => {
           </div>
 
           <div>
-            <label htmlFor="password" className="label text-light">
+            <label htmlFor="password" className="label textLink fs-4 text-light">
               Senha
             </label>
             <div>
@@ -73,7 +73,7 @@ const Login = () => {
                 autoComplete="password"
                 required
                 placeholder="Digite a sua senha"
-                className="input bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -81,18 +81,18 @@ const Login = () => {
           </div>
           <div className="d-flex justify-content-between">
             <input
-              className="checkbox form-check-input"
+              className="checkbox bg-transparent form-check-input text-light"
               type="checkbox"
               value=""
               id="checkDefault"
             />
             <label
-              className="checkboxLabel ms-1 text-light ms-2 me-5"
+              className="checkboxLabel textLink ms-1 text-light ms-2 me-5"
               htmlFor="checkDefault"
             >
               Lembrar de mim
             </label>
-            <Link to="/forgot-password" className="forgotPassLink text-decoration-none text-light text-end ms-5">
+            <Link to="/forgot-password" className="textLink text-decoration-none text-light text-end ms-5">
               Esqueci minha senha
             </Link>
           </div>

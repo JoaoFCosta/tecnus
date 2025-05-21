@@ -56,7 +56,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="header navbar fixed-top text-light p-3">
+    <header className="header textLink navbar fixed-top top-0 start-0 end-0 z-3 text-light p-3">
       <div className="container-fluid d-flex align-items-center justify-content-between">
         {/* Logo */}
         <Link className="fs-3 fw-bold text-decoration-none text-white" to="/">

@@ -8,7 +8,7 @@ import Classroom from "../assets/Classroom.png";
 import Seguranca from "../assets/Segurança.png";
 import Excel from "../assets/Excel.png";
 import DireitosConsumidor from "../assets/Direitos do consumidor.png";
-import BancoDados from "../assets/Banco de dados.png"
+import BancoDados from "../assets/Banco de dados.png";
 const Carousel = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const carouselRef = useRef(null);
@@ -35,82 +35,46 @@ const Carousel = () => {
     });
   };
 
+  const carouselItems = [
+    { src: Drive, alt: "Google Drive", text: "Google Drive" },
+    { src: Docs, alt: "Google Docs", text: "Google Docs" },
+    { src: Gmail, alt: "Gmail", text: "Gmail" },
+    { src: Planilhas, alt: "Google Planilhas", text: "Google Planilhas" },
+    {
+      src: Apresentacao,
+      alt: "Google Apresentações",
+      text: "Google Apresentações",
+    },
+    { src: Classroom, alt: "Google Classroom", text: "Google Classroom" },
+    {
+      src: Seguranca,
+      alt: "Segurança e Tecnologia",
+      text: "Segurança e Tecnologia",
+    },
+    { src: Excel, alt: "Excel Iniciante", text: "Excel Iniciante" },
+    { src: Excel, alt: "Excel Intermediário", text: "Excel Intermediário" },
+    {
+      src: DireitosConsumidor,
+      alt: "Direitos do Consumidor",
+      text: "Direitos do Consumidor",
+    },
+    {
+      src: BancoDados,
+      alt: "Tecnologia e Banco de Dados",
+      text: "Tecnologia e Banco de Dados",
+    },
+  ];
+
   return (
     <>
       <div className="d-flex flex-column align-items-center">
         <div className="d-flex overflow-x-hidden w-100 p-6" ref={carouselRef}>
-          <div className="carouselItemStyle">
-            <img src={Drive} alt="Google Drive" />
-            <p className="textStyle">Google Drive</p>
-          </div>
-
-          <div className="carouselItemStyle">
-            <img src={Docs} alt="Google Docs" />
-            <p className="textStyle">Google Docs</p>
-          </div>
-
-          <div className="carouselItemStyle">
-            <img src={Gmail} alt="Gmail" />
-            <p className="textStyle">Gmail</p>
-          </div>
-
-          <div className="carouselItemStyle">
-            <img src={Planilhas} alt="Google Planilhas" />
-            <p className="textStyle">
-              Google <br />
-              Planilhas
-            </p>
-          </div>
-
-          <div className="carouselItemStyle">
-            <img src={Apresentacao} alt="Google Apresentações" />
-            <p className="textStyle">
-              Google <br />
-              Apresentações
-            </p>
-          </div>
-
-          <div className="carouselItemStyle">
-            <img src={Classroom} alt="Google Classroom" />
-            <p className="textStyle">
-              Google <br /> Classroom
-            </p>
-          </div>
-
-          <div className="carouselItemStyle">
-            <img src={Seguranca} alt="Segurança e Tecnologia" />
-            <p className="textStyle">
-              Segurança e <br /> Tecnologia
-            </p>
-          </div>
-
-          <div className="carouselItemStyle">
-            <img src={Excel} alt="Excel" />
-            <p className="textStyle">
-              Excel <br /> Iniciante
-            </p>
-          </div>
-
-          <div className="carouselItemStyle">
-            <img src={Excel} alt="Excel" />
-            <p className="textStyle">
-              Excel <br /> Intermediário
-            </p>
-          </div>
-
-          <div className="carouselItemStyle">
-            <img src={DireitosConsumidor} alt="Direitos do Consumidor" />
-            <p className="textStyle">
-              Direitos do <br /> Consumidor
-            </p>
-          </div>
-
-          <div className="carouselItemStyle">
-            <img src={BancoDados} alt="Excel" />
-            <p className="textStyle">
-              Tecnologia e <br /> Banco de Dados
-            </p>
-          </div>
+          {carouselItems.map((item, idx) => (
+            <div className="carouselItemStyle d-flex flex-column align-items-center justify-content-center p-3" key={idx}>
+              <img src={item.src} alt={item.alt} />
+              <p className="textLink fs-2">{item.text}</p>
+            </div>
+          ))}
         </div>
         <div className="d-flex justify-content-between w-100 mt-2">
           <button

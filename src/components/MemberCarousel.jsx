@@ -29,7 +29,7 @@ const MemberCarousel = () => {
   return (
     <>
       <h1 className="text-more-color fw-bold">Nossa equipe:</h1>
-      <div className="position-absolute mt-5 connectingLine"></div>
+      <div className="position-absolute mt-5 connectingLine z-n1 start-0 end-0"></div>
       <div className="d-flex flex-column align-items-center mt-4">
         <div
           className="d-flex p-6 gap-5 overflow-hidden carouselContainer"

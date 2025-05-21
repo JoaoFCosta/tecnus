@@ -44,7 +44,7 @@ export const Home = () => {
             </div>
             <div className="container col-8">
               <Link to="/about">
-                <button className="aboutBtn">Saiba mais</button>
+                <button className="aboutBtn textLink text-black fw-bolder text-decoration-none border-0 rounded-2">Saiba mais</button>
               </Link>
             </div>
           </div>
@@ -61,7 +61,7 @@ export const Home = () => {
               Cursos básicos e profissionalizantes de tecnologia e
               empreendedorismo
             </h2>
-            <button className="moreBtn" onClick={handleVerMais}>
+            <button className="moreBtn textLink border-0 text-decoration-none text-black rounded-2" onClick={handleVerMais}>
               Ver mais detalhes
             </button>
           </div>

@@ -33,14 +33,14 @@ const BancoDados = () => {
       </h1>
 
       <div className="container d-flex justify-content-center gap-5">
-        <div className="courseLogo">
+        <div className="courseLogo badge d-flex flex-column align-items-center justify-content-center p-6 rounded-2">
           <img src={BancoDeDados} alt="Banco de Dados" />
-          <span className="textLink text-light fs-2 fw-bold text-center">
+          <span className="textLink text-light fs-5 fw-bold text-center">
             Tecnologia e Banco de Dados
           </span>
         </div>
 
-        <p className="textLink text-light col-6 fs-3 mt-3">
+        <p className="textLink text-light col-6 fs-3 mt-3 text-start">
           Entenda essa relação no meio digital. O Banco de Dados retorna
           resultados consistentes e íntegros, assegurando que as políticas de
           segurança dos dados sejam cumpridas.
@@ -69,7 +69,7 @@ const BancoDados = () => {
         <React.Fragment key={aula.id}>
           <div className="container mt-3 d-flex justify-content-between gap-5 flex-row">
             <div
-              className="position-relative playVideo"
+              className="position-relative playVideo d-flex align-items-center justify-content-center rounded-2"
               style={{ width: 320, height: 180, cursor: "pointer" }}
               onClick={() =>
                 navigate(`/curso/banco-dados/aula/${aula.id}`)
@@ -85,7 +85,7 @@ const BancoDados = () => {
             </span>
             <div className="d-flex flex-column align-items-end">
               <button
-                className="btn moreBtn fs-5 mx-5 h-25"
+                className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2 fs-5 mx-5 h-25"
                 onClick={() =>
                   navigate(`/curso/banco-dados/aula/${aula.id}`)
                 }
