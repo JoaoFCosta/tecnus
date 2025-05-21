@@ -21,6 +21,10 @@ import GooglePlanilhas from "./pages/Courses/GooglePlanilhas";
 import GoogleApresentacao from "./pages/Courses/GoogleApresentacao";
 import GoogleClassroom from "./pages/Courses/GoogleClassroom";
 import Seguranca from "./pages/Courses/Seguranca";
+import ExcelIniciante from "./pages/Courses/ExcelIniciante";
+import ExcelIntermediario from "./pages/Courses/ExcelIntermediario";
+import DireitosConsumidor from "./pages/Courses/DireitosConsumidor";
+import BancoDados from "./pages/Courses/BancoDados";
 
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
@@ -61,6 +65,10 @@ const AppContent = () => {
         <Route path="/google-apresentacao" element={<GoogleApresentacao />} />
         <Route path="/google-classroom" element={<GoogleClassroom />} />
         <Route path="/seguranca" element={<Seguranca />} />
+        <Route path="/excel-iniciante" element={<ExcelIniciante />} />
+        <Route path="/excel-intermediario" element={<ExcelIntermediario />} />
+        <Route path="/direitos-consumidor" element={<DireitosConsumidor />} />
+        <Route path="/banco-de-dados" element={<BancoDados />} />
       </Routes>
     </main>
   );

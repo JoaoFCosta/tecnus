@@ -79,7 +79,9 @@ const GoogleApresentacao = () => {
             <div
               className="position-relative playVideo"
               style={{ width: 320, height: 180, cursor: "pointer" }}
-              onClick={() => navigate(`/curso/google-docs/aula/${aula.id}`)}
+              onClick={() =>
+                navigate(`/curso/google-apresentacoes/aula/${aula.id}`)
+              }
             >
               <FaCirclePlay className="position-absolute top-50 start-50 translate-middle text-light fs-1" />
             </div>
@@ -92,7 +94,9 @@ const GoogleApresentacao = () => {
             <div className="d-flex flex-column align-items-end">
               <button
                 className="btn moreBtn fs-5 mx-5 h-25"
-                onClick={() => navigate(`/curso/google-docs/aula/${aula.id}`)}
+                onClick={() =>
+                  navigate(`/curso/google-apresentacoes/aula/${aula.id}`)
+                }
               >
                 Assistir aula
               </button>

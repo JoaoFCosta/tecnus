@@ -3,25 +3,21 @@ import { useNavigate } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaCirclePlay } from "react-icons/fa6";
 
-import Classroom from "../../assets/Classroom.png";
-
+import Consumidor from "../../assets/Direitos do consumidor.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-const GoogleClassroom = () => {
+const DireitosConsumidor = () => {
   const navigate = useNavigate();
 
-  const professor = "Adriana Almeida";
+  const professor = "Elídio da Silva";
 
   const aulas = [
-    { id: 1, titulo: "Tornar Público", duracao: "4 minutos" },
-    { id: 2, titulo: "Acesso Offline", duracao: "2 minutos" },
-    { id: 3, titulo: "Gmail e Google Drive", duracao: "4 minutos" },
-    { id: 4, titulo: "Tradutor", duracao: "4 minutos" },
-    { id: 5, titulo: "Atalhos", duracao: "2 minutos" },
-    { id: 6, titulo: "Acesso Offline", duracao: "2 minutos" },
-    { id: 7, titulo: "Acesso Offline", duracao: "2 minutos" },
-    { id: 8, titulo: "Acesso Offline", duracao: "2 minutos" },
+    {
+      id: 1,
+      titulo: "Tornar Público",
+      duracao: "41 minutos",
+    },
   ];
 
   const getTotalMinutos = (aulas) =>
@@ -32,23 +28,22 @@ const GoogleClassroom = () => {
   return (
     <>
       <Header />
-
       <h1 className="text-center fw-bold text-header-color mb-5">
-        Google Classroom
+        Direitos do Consumidor
       </h1>
 
       <div className="container d-flex justify-content-center gap-5">
         <div className="courseLogo">
-          <img src={Classroom} alt="Google Classroom" />
+          <img src={Consumidor} alt="Direitos do Consumidor" />
           <span className="textLink text-light fs-2 fw-bold text-center">
-            Google Apresentações
+            Direitos do Consumidor
           </span>
         </div>
 
         <p className="textLink text-light col-6 fs-3 mt-3">
-          O google classroom é uma ferramenta on-line gratuita que auxilia
-          professores, alunos e escolas com um espaço para a realização de aulas
-          virtuais de maneira organizada.
+          Aborda sobre relações de consumo, travadas entre fornecedores (quem
+          disponibiliza produtos ou serviços ao mercado) e consumidores (quem
+          consome).
           <br />
           <br />
           <strong>Duração:</strong> {getTotalMinutos(aulas)} minutos
@@ -70,16 +65,13 @@ const GoogleClassroom = () => {
         <h1 className="text-more-color fw-bold">O que você irá aprender:</h1>
       </div>
 
-      {/* Renderizar aulas dinamicamente */}
       {aulas.map((aula) => (
         <React.Fragment key={aula.id}>
           <div className="container mt-3 d-flex justify-content-between gap-5 flex-row">
             <div
               className="position-relative playVideo"
               style={{ width: 320, height: 180, cursor: "pointer" }}
-              onClick={() =>
-                navigate(`/curso/google-classroom/aula/${aula.id}`)
-              }
+              onClick={() => navigate(`/curso/direitos-consumidor/aula/${aula.id}`)}
             >
               <FaCirclePlay className="position-absolute top-50 start-50 translate-middle text-light fs-1" />
             </div>
@@ -93,7 +85,7 @@ const GoogleClassroom = () => {
               <button
                 className="btn moreBtn fs-5 mx-5 h-25"
                 onClick={() =>
-                  navigate(`/curso/google-classroom/aula/${aula.id}`)
+                  navigate(`/curso/direitos-consumidor/aula/${aula.id}`)
                 }
               >
                 Assistir aula
@@ -106,10 +98,9 @@ const GoogleClassroom = () => {
           </div>
         </React.Fragment>
       ))}
-
       <Footer />
     </>
   );
 };
 
-export default GoogleClassroom;
+export default DireitosConsumidor;

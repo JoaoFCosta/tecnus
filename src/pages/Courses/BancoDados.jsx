@@ -3,25 +3,21 @@ import { useNavigate } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaCirclePlay } from "react-icons/fa6";
 
-import Classroom from "../../assets/Classroom.png";
-
+import BancoDeDados from "../../assets/Banco de dados.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-const GoogleClassroom = () => {
+const BancoDados = () => {
   const navigate = useNavigate();
 
-  const professor = "Adriana Almeida";
+  const professor = "Duo Lindo";
 
   const aulas = [
-    { id: 1, titulo: "Tornar Público", duracao: "4 minutos" },
-    { id: 2, titulo: "Acesso Offline", duracao: "2 minutos" },
-    { id: 3, titulo: "Gmail e Google Drive", duracao: "4 minutos" },
-    { id: 4, titulo: "Tradutor", duracao: "4 minutos" },
-    { id: 5, titulo: "Atalhos", duracao: "2 minutos" },
-    { id: 6, titulo: "Acesso Offline", duracao: "2 minutos" },
-    { id: 7, titulo: "Acesso Offline", duracao: "2 minutos" },
-    { id: 8, titulo: "Acesso Offline", duracao: "2 minutos" },
+    {
+      id: 1,
+      titulo: "Tornar Público",
+      duracao: "24 minutos",
+    },
   ];
 
   const getTotalMinutos = (aulas) =>
@@ -32,23 +28,22 @@ const GoogleClassroom = () => {
   return (
     <>
       <Header />
-
       <h1 className="text-center fw-bold text-header-color mb-5">
-        Google Classroom
+        Tecnologia e Banco de Dados
       </h1>
 
       <div className="container d-flex justify-content-center gap-5">
         <div className="courseLogo">
-          <img src={Classroom} alt="Google Classroom" />
+          <img src={BancoDeDados} alt="Banco de Dados" />
           <span className="textLink text-light fs-2 fw-bold text-center">
-            Google Apresentações
+            Tecnologia e Banco de Dados
           </span>
         </div>
 
         <p className="textLink text-light col-6 fs-3 mt-3">
-          O google classroom é uma ferramenta on-line gratuita que auxilia
-          professores, alunos e escolas com um espaço para a realização de aulas
-          virtuais de maneira organizada.
+          Entenda essa relação no meio digital. O Banco de Dados retorna
+          resultados consistentes e íntegros, assegurando que as políticas de
+          segurança dos dados sejam cumpridas.
           <br />
           <br />
           <strong>Duração:</strong> {getTotalMinutos(aulas)} minutos
@@ -70,7 +65,6 @@ const GoogleClassroom = () => {
         <h1 className="text-more-color fw-bold">O que você irá aprender:</h1>
       </div>
 
-      {/* Renderizar aulas dinamicamente */}
       {aulas.map((aula) => (
         <React.Fragment key={aula.id}>
           <div className="container mt-3 d-flex justify-content-between gap-5 flex-row">
@@ -78,7 +72,7 @@ const GoogleClassroom = () => {
               className="position-relative playVideo"
               style={{ width: 320, height: 180, cursor: "pointer" }}
               onClick={() =>
-                navigate(`/curso/google-classroom/aula/${aula.id}`)
+                navigate(`/curso/banco-dados/aula/${aula.id}`)
               }
             >
               <FaCirclePlay className="position-absolute top-50 start-50 translate-middle text-light fs-1" />
@@ -93,7 +87,7 @@ const GoogleClassroom = () => {
               <button
                 className="btn moreBtn fs-5 mx-5 h-25"
                 onClick={() =>
-                  navigate(`/curso/google-classroom/aula/${aula.id}`)
+                  navigate(`/curso/banco-dados/aula/${aula.id}`)
                 }
               >
                 Assistir aula
@@ -106,10 +100,9 @@ const GoogleClassroom = () => {
           </div>
         </React.Fragment>
       ))}
-
       <Footer />
     </>
   );
 };
 
-export default GoogleClassroom;
+export default BancoDados;

@@ -1,12 +1,23 @@
 import React from "react";
 import TecnusLogo from "../../assets/LOGOVETO.svg";
 import Carousel from "../../components/Carousel";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 export const Home = () => {
+  const navigate = useNavigate();
+
+  const handleVerMais = () => {
+    const isLoggedIn = localStorage.getItem("user");
+    if (isLoggedIn) {
+      navigate("/courses");
+    } else {
+      navigate("/login");
+    }
+  };
+
   return (
     <>
       <div>
@@ -29,11 +40,7 @@ export const Home = () => {
 
             {/* Imagem */}
             <div className="col-md-6 text-center">
-              <img
-                src={TecnusLogo}
-                alt="Logo"
-                className="w-25"
-              />
+              <img src={TecnusLogo} alt="Logo" className="w-25" />
             </div>
             <div className="container col-8">
               <Link to="/about">
@@ -54,9 +61,9 @@ export const Home = () => {
               Cursos básicos e profissionalizantes de tecnologia e
               empreendedorismo
             </h2>
-            <Link to="/courses">
-              <button className="moreBtn">Ver mais detalhes</button>
-            </Link>
+            <button className="moreBtn" onClick={handleVerMais}>
+              Ver mais detalhes
+            </button>
           </div>
           <div className="col-8">
             <Carousel />

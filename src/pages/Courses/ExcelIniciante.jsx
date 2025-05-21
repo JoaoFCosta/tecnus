@@ -3,25 +3,31 @@ import { useNavigate } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaCirclePlay } from "react-icons/fa6";
 
-import Classroom from "../../assets/Classroom.png";
-
+import Excel from "../../assets/Excel.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-const GoogleClassroom = () => {
+const ExcelIniciante = () => {
   const navigate = useNavigate();
 
-  const professor = "Adriana Almeida";
+  const professor = "Matilda Rodrigues";
 
   const aulas = [
-    { id: 1, titulo: "Tornar Público", duracao: "4 minutos" },
-    { id: 2, titulo: "Acesso Offline", duracao: "2 minutos" },
-    { id: 3, titulo: "Gmail e Google Drive", duracao: "4 minutos" },
-    { id: 4, titulo: "Tradutor", duracao: "4 minutos" },
-    { id: 5, titulo: "Atalhos", duracao: "2 minutos" },
-    { id: 6, titulo: "Acesso Offline", duracao: "2 minutos" },
-    { id: 7, titulo: "Acesso Offline", duracao: "2 minutos" },
-    { id: 8, titulo: "Acesso Offline", duracao: "2 minutos" },
+    {
+      id: 1,
+      titulo: "Tornar Público",
+      duracao: "10 minutos",
+    },
+    {
+      id: 2,
+      titulo: "Acesso Offline",
+      duracao: "5 minutos",
+    },
+    {
+      id: 3,
+      titulo: "Criar uma Planilha",
+      duracao: "5 minutos",
+    },
   ];
 
   const getTotalMinutos = (aulas) =>
@@ -34,21 +40,21 @@ const GoogleClassroom = () => {
       <Header />
 
       <h1 className="text-center fw-bold text-header-color mb-5">
-        Google Classroom
+        Excel - Iniciante
       </h1>
 
       <div className="container d-flex justify-content-center gap-5">
         <div className="courseLogo">
-          <img src={Classroom} alt="Google Classroom" />
+          <img src={Excel} alt="Excel" />
           <span className="textLink text-light fs-2 fw-bold text-center">
-            Google Apresentações
+            Excel <br /> (iniciante)
           </span>
         </div>
 
         <p className="textLink text-light col-6 fs-3 mt-3">
-          O google classroom é uma ferramenta on-line gratuita que auxilia
-          professores, alunos e escolas com um espaço para a realização de aulas
-          virtuais de maneira organizada.
+          O Excel é um software de planilhas eletrônicas, que utiliza tabelas
+          para realizar cálculos ou apresentar dados. Com ele, é possível
+          organizar orçamentos, por exemplo.
           <br />
           <br />
           <strong>Duração:</strong> {getTotalMinutos(aulas)} minutos
@@ -77,9 +83,7 @@ const GoogleClassroom = () => {
             <div
               className="position-relative playVideo"
               style={{ width: 320, height: 180, cursor: "pointer" }}
-              onClick={() =>
-                navigate(`/curso/google-classroom/aula/${aula.id}`)
-              }
+              onClick={() => navigate(`/curso/excel-iniciante/aula/${aula.id}`)}
             >
               <FaCirclePlay className="position-absolute top-50 start-50 translate-middle text-light fs-1" />
             </div>
@@ -93,7 +97,7 @@ const GoogleClassroom = () => {
               <button
                 className="btn moreBtn fs-5 mx-5 h-25"
                 onClick={() =>
-                  navigate(`/curso/google-classroom/aula/${aula.id}`)
+                  navigate(`/curso/excel-iniciante/aula/${aula.id}`)
                 }
               >
                 Assistir aula
@@ -106,10 +110,9 @@ const GoogleClassroom = () => {
           </div>
         </React.Fragment>
       ))}
-
       <Footer />
     </>
   );
 };
 
-export default GoogleClassroom;
+export default ExcelIniciante;
