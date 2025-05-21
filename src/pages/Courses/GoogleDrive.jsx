@@ -10,6 +10,8 @@ import Footer from "../../components/Footer";
 const GoogleDrive = () => {
   const navigate = useNavigate();
 
+  const professor = "Claudinho Buchecha";
+
   const aulas = [
     {
       id: 1,
@@ -32,11 +34,17 @@ const GoogleDrive = () => {
       duracao: "10 minutos",
     },
     {
-    id: 5,
-    titulo: "Atalhos",
-    duracao: "10 minutos",
+      id: 5,
+      titulo: "Atalhos",
+      duracao: "10 minutos",
     },
   ];
+
+  const getTotalMinutos = (aulas) =>
+    aulas.reduce((acc, aula) => {
+      const match = aula.duracao.match(/\d+/);
+      return acc + (match ? parseInt(match[0], 10) : 0);
+    }, 0);
 
   return (
     <>
@@ -58,9 +66,9 @@ const GoogleDrive = () => {
           planilhas e apresentações.
           <br />
           <br />
-          <strong>Duração:</strong> 51 minutos e 54 segundos
+          <strong>Duração:</strong> {getTotalMinutos(aulas)} minutos
           <br />
-          <strong>Professor:</strong> Claudinho Buchecha
+          <strong>Professor:</strong> {professor}
         </p>
       </div>
 

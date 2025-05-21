@@ -3,21 +3,21 @@ import { useNavigate } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaCirclePlay } from "react-icons/fa6";
 
-import Docs from "../../assets/Docx.png";
+import SegurancaImg from "../../assets/Segurança.png";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-const GoogleDocs = () => {
+const Seguranca = () => {
   const navigate = useNavigate();
 
-  const professor = "Havaiana Alegítima";
+  const professor = "Serginho Pomodoro";
 
   const aulas = [
     {
       id: 1,
       titulo: "Tornar Público",
-      duracao: "12 minutos",
+      duracao: "7 minutos",
     },
   ];
 
@@ -30,22 +30,20 @@ const GoogleDocs = () => {
   return (
     <>
       <Header />
-
       <h1 className="text-center fw-bold text-header-color mb-5">
-        Google Docs <br />
-        (documentos)
+        Segurança e Tecnologia
       </h1>
 
       <div className="container d-flex justify-content-center gap-5">
         <div className="courseLogo">
-          <img src={Docs} alt="Google Docs" />
-          <span className="textLink text-light fs-2 fw-bold">Google Docs</span>
+          <img src={SegurancaImg} alt="Google Planilhas" />
+          <span className="textLink text-light fs-2 fw-bold text-center">
+            Segurança e Tecnologia
+          </span>
         </div>
-
         <p className="textLink text-light col-6 fs-3 mt-3">
-          O Google Docs é voltado para a produção textual de diversos arquivos,
-          como cartas, currículos, boletins informativos, brochuras, relatórios,
-          planos de aula, etc.
+          A sua segurança é algo essencial no meio tecnológico, para manter suas
+          informações pessoais em sigilo.
           <br />
           <br />
           <strong>Duração:</strong> {getTotalMinutos(aulas)} minutos
@@ -67,14 +65,13 @@ const GoogleDocs = () => {
         <h1 className="text-more-color fw-bold">O que você irá aprender:</h1>
       </div>
 
-      {/* Renderizar aulas dinamicamente */}
       {aulas.map((aula) => (
         <React.Fragment key={aula.id}>
           <div className="container mt-3 d-flex justify-content-between gap-5 flex-row">
             <div
               className="position-relative playVideo"
               style={{ width: 320, height: 180, cursor: "pointer" }}
-              onClick={() => navigate(`/curso/google-docs/aula/${aula.id}`)}
+              onClick={() => navigate(`/curso/google-gmail/aula/${aula.id}`)}
             >
               <FaCirclePlay className="position-absolute top-50 start-50 translate-middle text-light fs-1" />
             </div>
@@ -87,7 +84,7 @@ const GoogleDocs = () => {
             <div className="d-flex flex-column align-items-end">
               <button
                 className="btn moreBtn fs-5 mx-5 h-25"
-                onClick={() => navigate(`/curso/google-docs/aula/${aula.id}`)}
+                onClick={() => navigate(`/curso/google-gmail/aula/${aula.id}`)}
               >
                 Assistir aula
               </button>
@@ -99,10 +96,9 @@ const GoogleDocs = () => {
           </div>
         </React.Fragment>
       ))}
-
       <Footer />
     </>
   );
 };
 
-export default GoogleDocs;
+export default Seguranca;

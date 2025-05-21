@@ -75,7 +75,7 @@ const Courses = () => {
         { id: 1, titulo: "Tornar Público", duracao: "10 minutos" },
         { id: 2, titulo: "Acesso Offline", duracao: "9 minutos" },
       ],
-      link: "/google-apresentacoes",
+      link: "/google-apresentacao",
       descricao:
         "O google apresentações permite criar e formatar slides em nuvem, onde todas as mudanças que você fizer serão salvas. Você pode editar um modelo pronto ou criar um novo.",
     },
@@ -158,7 +158,7 @@ const Courses = () => {
       ],
       link: "/banco-de-dados",
       descricao:
-        "Entenda essa relação no meio digital. O Banco de Dados retorna resultados consistentes e íntegros, assegurando que as políticas de segurança dos dados sejam cumpridas.",
+        "Entenda essa relação no meio digital. O Banco de Dados retorna resultados consistentes e íntegros, assegurando que as políticas de segurança dos dados sejam cumpridas.",
     },
   ];
   // Função para somar o tempo total em minutos

@@ -17,6 +17,10 @@ import Terms from "./pages/Terms/Terms";
 import GoogleDrive from "./pages/Courses/GoogleDrive";
 import GoogleDocs from "./pages/Courses/GoogleDocs";
 import GoogleGmail from "./pages/Courses/GoogleGmail";
+import GooglePlanilhas from "./pages/Courses/GooglePlanilhas";
+import GoogleApresentacao from "./pages/Courses/GoogleApresentacao";
+import GoogleClassroom from "./pages/Courses/GoogleClassroom";
+import Seguranca from "./pages/Courses/Seguranca";
 
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
@@ -53,6 +57,10 @@ const AppContent = () => {
         <Route path="/google-drive" element={<GoogleDrive />} />
         <Route path="/google-docs" element={<GoogleDocs />} />
         <Route path="/google-gmail" element={<GoogleGmail />} />
+        <Route path="/google-planilhas" element={<GooglePlanilhas />} />
+        <Route path="/google-apresentacao" element={<GoogleApresentacao />} />
+        <Route path="/google-classroom" element={<GoogleClassroom />} />
+        <Route path="/seguranca" element={<Seguranca />} />
       </Routes>
     </main>
   );

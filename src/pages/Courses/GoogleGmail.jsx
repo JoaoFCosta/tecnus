@@ -11,6 +11,8 @@ import Footer from "../../components/Footer";
 const GoogleGmail = () => {
   const navigate = useNavigate();
 
+  const professor = "Getúlio de Oliveira";
+
   const aulas = [
     {
       id: 1,
@@ -23,6 +25,13 @@ const GoogleGmail = () => {
       duracao: "9 minutos",
     },
   ];
+
+  const getTotalMinutos = (aulas) =>
+    aulas.reduce((acc, aula) => {
+      const match = aula.duracao.match(/\d+/);
+      return acc + (match ? parseInt(match[0], 10) : 0);
+    }, 0);
+
   return (
     <>
       <Header />
@@ -30,7 +39,7 @@ const GoogleGmail = () => {
 
       <div className="container d-flex justify-content-center gap-5">
         <div className="courseLogo">
-          <img src={Gmail} alt="Google Drive" />
+          <img src={Gmail} alt="Google Gmail" />
           <span className="textLink text-light fs-2 fw-bold">G-mail</span>
         </div>
         <p className="textLink text-light col-6 fs-3 mt-3">
@@ -39,9 +48,9 @@ const GoogleGmail = () => {
           planilhas e apresentações.
           <br />
           <br />
-          <strong>Duração:</strong> 18 minutos e 56 segundos
+          <strong>Duração:</strong> {getTotalMinutos(aulas)} minutos
           <br />
-          <strong>Professor:</strong> Getúlio de Oliveira
+          <strong>Professor:</strong> {professor}
         </p>
       </div>
 

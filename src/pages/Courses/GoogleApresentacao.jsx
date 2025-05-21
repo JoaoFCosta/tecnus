@@ -3,21 +3,25 @@ import { useNavigate } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaCirclePlay } from "react-icons/fa6";
 
-import Docs from "../../assets/Docx.png";
-
+import Apresentacao from "../../assets/Apresentações.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-const GoogleDocs = () => {
+const GoogleApresentacao = () => {
   const navigate = useNavigate();
 
-  const professor = "Havaiana Alegítima";
+  const professor = "Valéria da Silva";
 
   const aulas = [
     {
       id: 1,
       titulo: "Tornar Público",
-      duracao: "12 minutos",
+      duracao: "10 minutos",
+    },
+    {
+      id: 2,
+      titulo: "Acesso Offline",
+      duracao: "9 minutos",
     },
   ];
 
@@ -32,20 +36,21 @@ const GoogleDocs = () => {
       <Header />
 
       <h1 className="text-center fw-bold text-header-color mb-5">
-        Google Docs <br />
-        (documentos)
+        Google Apresentações
       </h1>
 
       <div className="container d-flex justify-content-center gap-5">
         <div className="courseLogo">
-          <img src={Docs} alt="Google Docs" />
-          <span className="textLink text-light fs-2 fw-bold">Google Docs</span>
+          <img src={Apresentacao} alt="Google Apresentações" />
+          <span className="textLink text-light fs-2 fw-bold text-center">
+            Google Apresentações
+          </span>
         </div>
 
         <p className="textLink text-light col-6 fs-3 mt-3">
-          O Google Docs é voltado para a produção textual de diversos arquivos,
-          como cartas, currículos, boletins informativos, brochuras, relatórios,
-          planos de aula, etc.
+          O google apresentações permite criar e formatar slides em nuvem, onde
+          todas as mudanças que você fizer serão salvas. Você pode editar um
+          modelo pronto ou criar um novo.
           <br />
           <br />
           <strong>Duração:</strong> {getTotalMinutos(aulas)} minutos
@@ -105,4 +110,4 @@ const GoogleDocs = () => {
   );
 };
 
-export default GoogleDocs;
+export default GoogleApresentacao;

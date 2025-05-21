@@ -3,22 +3,25 @@ import { useNavigate } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaCirclePlay } from "react-icons/fa6";
 
-import Docs from "../../assets/Docx.png";
+import Classroom from "../../assets/Classroom.png";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
-const GoogleDocs = () => {
+const GoogleClassroom = () => {
   const navigate = useNavigate();
 
-  const professor = "Havaiana Alegítima";
+  const professor = "Adriana Almeida";
 
   const aulas = [
-    {
-      id: 1,
-      titulo: "Tornar Público",
-      duracao: "12 minutos",
-    },
+    { id: 1, titulo: "Tornar Público", duracao: "4 minutos" },
+    { id: 2, titulo: "Acesso Offline", duracao: "2 minutos" },
+    { id: 3, titulo: "Gmail e Google Drive", duracao: "4 minutos" },
+    { id: 4, titulo: "Tradutor", duracao: "4 minutos" },
+    { id: 5, titulo: "Atalhos", duracao: "2 minutos" },
+    { id: 6, titulo: "Acesso Offline", duracao: "2 minutos" },
+    { id: 7, titulo: "Acesso Offline", duracao: "2 minutos" },
+    { id: 8, titulo: "Acesso Offline", duracao: "2 minutos" },
   ];
 
   const getTotalMinutos = (aulas) =>
@@ -26,26 +29,26 @@ const GoogleDocs = () => {
       const match = aula.duracao.match(/\d+/);
       return acc + (match ? parseInt(match[0], 10) : 0);
     }, 0);
-
   return (
     <>
       <Header />
 
       <h1 className="text-center fw-bold text-header-color mb-5">
-        Google Docs <br />
-        (documentos)
+        Google Classroom
       </h1>
 
       <div className="container d-flex justify-content-center gap-5">
         <div className="courseLogo">
-          <img src={Docs} alt="Google Docs" />
-          <span className="textLink text-light fs-2 fw-bold">Google Docs</span>
+          <img src={Classroom} alt="Google Classroom" />
+          <span className="textLink text-light fs-2 fw-bold text-center">
+            Google Apresentações
+          </span>
         </div>
 
         <p className="textLink text-light col-6 fs-3 mt-3">
-          O Google Docs é voltado para a produção textual de diversos arquivos,
-          como cartas, currículos, boletins informativos, brochuras, relatórios,
-          planos de aula, etc.
+          O google classroom é uma ferramenta on-line gratuita que auxilia
+          professores, alunos e escolas com um espaço para a realização de aulas
+          virtuais de maneira organizada.
           <br />
           <br />
           <strong>Duração:</strong> {getTotalMinutos(aulas)} minutos
@@ -105,4 +108,4 @@ const GoogleDocs = () => {
   );
 };
 
-export default GoogleDocs;
+export default GoogleClassroom;
