@@ -25,6 +25,7 @@ import ExcelIniciante from "./pages/Courses/ExcelIniciante";
 import ExcelIntermediario from "./pages/Courses/ExcelIntermediario";
 import DireitosConsumidor from "./pages/Courses/DireitosConsumidor";
 import BancoDados from "./pages/Courses/BancoDados";
+import Profile from "./pages/Profile/Profile";
 
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
@@ -65,21 +66,40 @@ const AppContent = () => {
         <Route path="/google-gmail" element={<GoogleGmail />} />
         <Route path="/curso/google-gmail/aula/:id" element={<GoogleGmail />} />
         <Route path="/google-planilhas" element={<GooglePlanilhas />} />
-        <Route path="/curso/google-planilhas/aula/:id" element={<GooglePlanilhas />} />
+        <Route
+          path="/curso/google-planilhas/aula/:id"
+          element={<GooglePlanilhas />}
+        />
         <Route path="/google-apresentacao" element={<GoogleApresentacao />} />
-        <Route path="/curso/google-apresentacao/aula/:id" element={<GoogleApresentacao />} />
+        <Route
+          path="/curso/google-apresentacao/aula/:id"
+          element={<GoogleApresentacao />}
+        />
         <Route path="/google-classroom" element={<GoogleClassroom />} />
-        <Route path="/curso/google-classroom/aula/:id" element={<GoogleClassroom />} />
+        <Route
+          path="/curso/google-classroom/aula/:id"
+          element={<GoogleClassroom />}
+        />
         <Route path="/seguranca" element={<Seguranca />} />
         <Route path="/curso/seguranca/aula/:id" element={<Seguranca />} />
         <Route path="/excel-iniciante" element={<ExcelIniciante />} />
-        <Route path="/curso/excel-iniciante/aula/:id" element={<ExcelIniciante />} />
+        <Route
+          path="/curso/excel-iniciante/aula/:id"
+          element={<ExcelIniciante />}
+        />
         <Route path="/excel-intermediario" element={<ExcelIntermediario />} />
-        <Route path="/curso/excel-intermediario/aula/:id" element={<ExcelIntermediario />} />
+        <Route
+          path="/curso/excel-intermediario/aula/:id"
+          element={<ExcelIntermediario />}
+        />
         <Route path="/direitos-consumidor" element={<DireitosConsumidor />} />
-        <Route path="/curso/direitos-consumidor/aula/:id" element={<DireitosConsumidor />} />
+        <Route
+          path="/curso/direitos-consumidor/aula/:id"
+          element={<DireitosConsumidor />}
+        />
         <Route path="/banco-de-dados" element={<BancoDados />} />
         <Route path="/curso/banco-dados/aula/:id" element={<BancoDados />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </main>
   );

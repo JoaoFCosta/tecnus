@@ -16,11 +16,20 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      setIsLoggedIn(true);
-      setUserName(user.name);
-    }
+    const updateUser = () => {
+      const user = JSON.parse(localStorage.getItem("user"));
+      if (user) {
+        setIsLoggedIn(true);
+        setUserName(user.name);
+      } else {
+        setIsLoggedIn(false);
+        setUserName("");
+      }
+    };
+
+    updateUser();
+    window.addEventListener("userUpdated", updateUser);
+    return () => window.removeEventListener("userUpdated", updateUser);
   }, []);
 
   useEffect(() => {
