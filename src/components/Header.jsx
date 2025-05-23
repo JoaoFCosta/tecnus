@@ -118,7 +118,7 @@ const Header = () => {
               </Link>
 
               <Link
-                to="/courses"
+                to="/my-courses"
                 className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4 mt-2 mb-2"
               >
                 <MdOndemandVideo className="fs-4 mx-2 me-4" />

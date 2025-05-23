@@ -26,6 +26,7 @@ import ExcelIntermediario from "./pages/Courses/ExcelIntermediario";
 import DireitosConsumidor from "./pages/Courses/DireitosConsumidor";
 import BancoDados from "./pages/Courses/BancoDados";
 import Profile from "./pages/Profile/Profile";
+import MyCourses from "./pages/Profile/MyCourses";
 
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
@@ -100,6 +101,7 @@ const AppContent = () => {
         <Route path="/banco-de-dados" element={<BancoDados />} />
         <Route path="/curso/banco-dados/aula/:id" element={<BancoDados />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/my-courses" element={<MyCourses />} />
       </Routes>
     </main>
   );
