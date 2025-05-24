@@ -118,6 +118,13 @@ const GoogleDrive = () => {
         </React.Fragment>
       ))}
 
+      <div className="container d-flex justify-content-center">
+        <button
+          className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2 fs-5 mx-5 h-25 mb-5 py-2"
+          onClick={() => navigate("/quizzes/google-drive")}
+        >Fazer o quiz!</button>
+      </div>
+
       <Footer />
     </>
   );
