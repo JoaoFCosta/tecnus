@@ -2,7 +2,6 @@ import { Link } from "react-router";
 import { FaInstagram } from "react-icons/fa";
 import { PiLinkedinLogoLight } from "react-icons/pi";
 
-
 const Footer = () => {
   return (
     <footer className="text-white py-4 footer">
@@ -10,7 +9,10 @@ const Footer = () => {
         <div className="row align-items-center">
           <div className="col-md-4 mb-3 mb-md-0 text-center text-md-start">
             <h2 className="fs-3 fw-bold mb-2">Tecnus Saturn</h2>
-            <Link to="/terms" className="small text-decoration-none text-white textLink">
+            <Link
+              to="/terms"
+              className="small text-decoration-none text-white textLink"
+            >
               Política de privacidade e<br />
               termos de uso
             </Link>
@@ -23,8 +25,9 @@ const Footer = () => {
               redes sociais
             </p>
             <div className="d-flex justify-content-center gap-3">
-              <Link
-                href="#"
+              <a
+                href="https://www.instagram.com/facampenact/"
+                target="_blank"
                 className="text-decoration-none"
                 style={{ color: "#e263c9" }}
               >
@@ -36,9 +39,10 @@ const Footer = () => {
                   }}
                 />
                 <span className="visually-hidden">Instagram</span>
-              </Link>
-              <Link
-                href="#"
+              </a>
+              <a
+                href="https://www.linkedin.com/company/enactusfacamp/?originalSubdomain=br"
+                target="_blank"
                 className="text-decoration-none"
                 style={{ color: "#e263c9" }}
               >
@@ -50,9 +54,10 @@ const Footer = () => {
                   }}
                 />
                 <span className="visually-hidden">LinkedIn</span>
-              </Link>
+              </a>
               <Link
-                href="#"
+                href="https://www.instagram.com/facampenact/"
+                target="_blank"
                 className="text-decoration-none"
                 style={{ color: "#e263c9" }}
               >

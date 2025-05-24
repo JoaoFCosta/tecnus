@@ -61,7 +61,7 @@ const Header = () => {
   const notifications = [
     "Bem-vindo ao Tecnus!",
     "Novo curso disponível.",
-    "Sua inscrição foi confirmada.",
+    "Lucas Costa respondeu seu comentário.",
   ];
 
   return (
@@ -108,7 +108,9 @@ const Header = () => {
           />
           {isLoggedIn && showMenu && (
             <div className="position-absolute top-100 end-0 mt-2 bg-gray-700 text-light rounded-4 py-4 shadow p-2 z-3">
-              <span className="textLink text-gray-400">Conta</span>
+              <span className="textLink text-start text-gray-400 mb-3">
+                Conta
+              </span>
               <Link
                 to="/profile"
                 className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4"
@@ -125,7 +127,9 @@ const Header = () => {
                 Meus Cursos
               </Link>
 
-              <span className="textLink text-gray-400">Notificações</span>
+              <span className="textLink text-gray-400 text-start">
+                Notificações
+              </span>
               <br />
               <button
                 type="button"

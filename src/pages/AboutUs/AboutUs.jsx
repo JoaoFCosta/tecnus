@@ -16,7 +16,7 @@ const AboutUs = () => {
 
         <h1 className="fw-bold text-more-color mt-5">Nosso principios:</h1>
 
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center user-select-none pointer-event-none">
           <img src={Principios} alt="" className="col-7 img-fluid" />
         </div>
 
