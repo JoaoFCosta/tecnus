@@ -28,6 +28,7 @@ import BancoDados from "./pages/Courses/BancoDados";
 import Profile from "./pages/Profile/Profile";
 import MyCourses from "./pages/Profile/MyCourses";
 import Quiz from "./pages/Quizzes/Quiz";
+import Resultado from "./pages/Quizzes/Result";
 
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
@@ -105,6 +106,8 @@ const AppContent = () => {
         <Route path="/my-courses" element={<MyCourses />} />
         <Route path="/quizzes" element={<Quiz />} />
         <Route path="/quizzes/:quizId" element={<Quiz />} />
+        <Route path="/quizzes/:quizId/resultado" element={<Resultado />} />
+        <Route path="/quizzes/resultado" element={<Resultado />} />
       </Routes>
     </main>
   );
