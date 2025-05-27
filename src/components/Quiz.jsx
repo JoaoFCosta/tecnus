@@ -7,6 +7,8 @@ import { quizzes } from "../data/Quiz";
 const Quiz = ({ quizId }) => {
   const quiz = quizzes[quizId];
   const [current, setCurrent] = useState(0);
+  const [resposta, setResposta] = useState("");
+  const [score, setScore] = useState(0);
   const navigate = useNavigate();
 
   if (!quiz) {
@@ -16,14 +18,25 @@ const Quiz = ({ quizId }) => {
   const perguntaAtual = quiz.perguntas[current];
 
   const handleNext = () => {
-    if (current < quiz.perguntas.length - 1) {
-      setCurrent(current + 1);
+    // Verifica se a resposta está correta
+    const respostaCorreta = perguntaAtual.alternativas[perguntaAtual.resposta].toLowerCase();
+    if (resposta.trim().toLowerCase() === respostaCorreta) {
+      setScore(score + 1);
     }
+    setResposta("");
+    setCurrent(current + 1);
   };
 
   const handleResult = () => {
-    // Você pode passar dados via state se quiser mostrar o resultado do usuário
-    navigate(`/quizzes/${quizId}/resultado`);
+    // Verifica se a resposta da última pergunta está correta
+    const respostaCorreta = perguntaAtual.alternativas[perguntaAtual.resposta].toLowerCase();
+    let finalScore = score;
+    if (resposta.trim().toLowerCase() === respostaCorreta) {
+      finalScore += 1;
+    }
+    navigate(`/quizzes/${quizId}/resultado`, {
+      state: { score: finalScore, total: quiz.perguntas.length },
+    });
   };
 
   return (
@@ -55,6 +68,8 @@ const Quiz = ({ quizId }) => {
             type="text"
             className="answerBadge form-control bg-gray-800 text-light textLink text-start rounded-5 p-3"
             placeholder="Escreva sua resposta aqui!"
+            value={resposta}
+            onChange={(e) => setResposta(e.target.value)}
           />
         </div>
       </div>

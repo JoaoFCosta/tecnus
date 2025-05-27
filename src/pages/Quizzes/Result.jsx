@@ -9,7 +9,7 @@ const Result = () => {
   const { quizId } = useParams();
 
   // Recebe score e total do state, ou usa valores padrão
-  const { score = 0, total = 100 } = location.state || {};
+  const { score = 0, total = 0 } = location.state || {};
 
   const getFeedback = () => {
     const percent = total > 0 ? (score / total) * 100 : 0;
@@ -21,6 +21,16 @@ const Result = () => {
 
   const courseNames = {
     "google-drive": "Google Drive",
+    "google-docs": "Google Docs",
+    "gmail": "Gmail",
+    "google-planilhas": "Google Planilhas",
+    "google-apresentacao": "Google Apresentações",
+    "google-classroom": "Google Classroom",
+    "seguranca-tecnologia": "Segurança e Tecnologia",
+    "excel-iniciante": "Excel Iniciante",
+    "excel-intermediario": "Excel Intermediário",
+    "direitos-consumidor": "Direitos do Consumidor",
+    "tecnologia-banco-dados": "Tecnologia e Banco de Dados",
   };
 
   const courseName = courseNames[quizId] || "Curso Desconhecido";
@@ -32,16 +42,17 @@ const Result = () => {
   };
 
   const certificado = () => {
-    if (score >= 50) {
+    const percent = total > 0 ? (score / total) * 100 : 0;
+    if (percent >= 50) {
       return (
-        <div className="mt-4">
+        <div className="mt-4 bg-gray-900 w-100 p-2 rounded-5">
           <span className="fs-3 textLink text-light">
             Você pode solicitar seu{" "}
             <button
-              className="text-primary border-0 bg-transparent"
+              className="bg-transparent border-0 text-light text-decoration-underline"
               onClick={handleCertificadoClick}
             >
-              certificado!
+              Certificado
             </button>
           </span>
         </div>
@@ -73,12 +84,6 @@ const Result = () => {
           onClick={() => navigate("/courses")}
         >
           Voltar aos cursos
-        </button>
-        <button
-          className="btn moreBtn textLink border-0 text-black rounded-2 fs-3 my-5 mx-2"
-          onClick={() => navigate(`/quizzes/${quizId}`)}
-        >
-          Tentar novamente
         </button>
       </div>
       <Footer />

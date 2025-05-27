@@ -88,7 +88,7 @@ const GoogleClassroom = () => {
               className="position-relative playVideo d-flex align-items-center justify-content-center rounded-2"
               onClick={() => {
                 marcarComoAssistida(aula.id);
-                navigate(`/curso/google-classroom/aula/${aula.id}`);
+                navigate(`/class/google-classroom/aula/${aula.id}`);
               }}
             >
               <FaCirclePlay className="position-absolute top-50 start-50 translate-middle text-light fs-1" />
@@ -104,7 +104,7 @@ const GoogleClassroom = () => {
                 className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2 fs-5 mx-5 h-25"
                 onClick={() => {
                   marcarComoAssistida(aula.id);
-                  navigate(`/curso/google-classroom/aula/${aula.id}`);
+                  navigate(`/class/google-classroom/aula/${aula.id}`);
                 }}
               >
                 Assistir aula

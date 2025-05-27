@@ -29,6 +29,7 @@ import Profile from "./pages/Profile/Profile";
 import MyCourses from "./pages/Profile/MyCourses";
 import Quiz from "./pages/Quizzes/Quiz";
 import Resultado from "./pages/Quizzes/Result";
+import Classes from "./pages/Classes/Classes";
 
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
@@ -108,6 +109,27 @@ const AppContent = () => {
         <Route path="/quizzes/:quizId" element={<Quiz />} />
         <Route path="/quizzes/:quizId/resultado" element={<Resultado />} />
         <Route path="/quizzes/resultado" element={<Resultado />} />
+        <Route path="/class" element={<Classes />} />
+        <Route path="/class/google-drive/aula/:id" element={<Classes />} />
+        <Route path="/class/google-docs/aula/:id" element={<Classes />} />
+        <Route path="/class/google-gmail/aula/:id" element={<Classes />} />
+        <Route path="/class/google-planilhas/aula/:id" element={<Classes />} />
+        <Route
+          path="/class/google-apresentacao/aula/:id"
+          element={<Classes />}
+        />
+        <Route path="/class/google-classroom/aula/:id" element={<Classes />} />
+        <Route path="/class/seguranca/aula/:id" element={<Classes />} />
+        <Route path="/class/excel-iniciante/aula/:id" element={<Classes />} />
+        <Route
+          path="/class/excel-intermediario/aula/:id"
+          element={<Classes />}
+        />
+        <Route
+          path="/class/direitos-consumidor/aula/:id"
+          element={<Classes />}
+        />
+        <Route path="/class/banco-dados/aula/:id" element={<Classes />} />
       </Routes>
     </main>
   );
