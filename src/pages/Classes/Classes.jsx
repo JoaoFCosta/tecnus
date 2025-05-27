@@ -7,6 +7,8 @@ import { MdOutlineSubtitles } from "react-icons/md";
 import { FaPlay } from "react-icons/fa";
 import { TbRewindBackward10 } from "react-icons/tb";
 import { TbRewindForward10 } from "react-icons/tb";
+import { FaVolumeUp } from "react-icons/fa";
+import { FaVolumeMute } from "react-icons/fa";
 
 const courseNames = {
   "google-drive": "Google Drive",
@@ -15,7 +17,7 @@ const courseNames = {
   "google-planilhas": "Google Planilhas",
   "google-apresentacao": "Google Apresentação",
   "google-classroom": "Google Classroom",
-  seguranca: "Segurança",
+  "seguranca": "Segurança",
   "excel-iniciante": "Excel Iniciante",
   "excel-intermediario": "Excel Intermediário",
   "direitos-consumidor": "Direitos do Consumidor",
@@ -58,6 +60,17 @@ export default function Classes() {
     // Previne que cliques em elementos filhos (ex: botões) disparem o toggle
     if (e.target.tagName.toLowerCase() === "video") {
       togglePlay();
+    }
+  };
+
+  const toggleFullScreen = () => {
+    const video = videoRef.current;
+    if (!document.fullscreenElement) {
+      video.requestFullscreen().catch((err) => {
+        console.error(`Erro ao entrar em tela cheia: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
     }
   };
 
@@ -225,7 +238,11 @@ export default function Classes() {
                     className="btn btn-dark btn-sm"
                     title="Volume"
                   >
-                    {isMuted || volume === 0 ? "🔇" : "🔊"}
+                    {isMuted || volume === 0 ? (
+                      <FaVolumeMute />
+                    ) : (
+                      <FaVolumeUp />
+                    )}
                   </button>
 
                   {showVolumeSlider && (
@@ -255,10 +272,16 @@ export default function Classes() {
                   setProgress(newProgress);
                 }}
               />
-              <div className="text-white small">
-                {formatTime(videoRef.current?.currentTime || 0)} /{" "}
-                {formatTime(videoRef.current?.duration || 0)}
+              <div className="text-white small mx-3">
+                {formatTime(videoRef.current?.currentTime || 0)}
               </div>
+            <button
+              onClick={toggleFullScreen}
+              className="btn btn-dark btn-sm"
+              title="Tela cheia"
+            >
+              ⛶
+            </button>
             </div>
           </div>
         </div>
