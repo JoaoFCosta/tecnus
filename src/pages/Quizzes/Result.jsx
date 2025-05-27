@@ -9,7 +9,7 @@ const Result = () => {
   const { quizId } = useParams();
 
   // Recebe score e total do state, ou usa valores padrão
-  const { score = 60, total = 100 } = location.state || {};
+  const { score = 0, total = 100 } = location.state || {};
 
   const getFeedback = () => {
     const percent = total > 0 ? (score / total) * 100 : 0;

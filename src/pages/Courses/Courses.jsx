@@ -1,25 +1,14 @@
 import Caminho from "../../assets/CaminhoEntreOsCursos.png";
 import Caminho2 from "../../assets/Caminho2.png";
-import Drive from "../../assets/Drive.png";
-import Docs from "../../assets/Docx.png";
-import Gmail from "../../assets/Gmail.png";
-import Planilhas from "../../assets/Planilhas.png";
-import Apresentacao from "../../assets/Apresentações.png";
-import Classroom from "../../assets/Classroom.png";
-import Seguranca from "../../assets/Segurança.png";
-import Excel from "../../assets/Excel.png";
-import DireitosConsumidor from "../../assets/Direitos do consumidor.png";
-import BancoDados from "../../assets/Banco de dados.png";
 
 import { Link } from "react-router";
 
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
- 
+
 import { cursos, profissionais } from "../../data/Courses";
 
 const Courses = () => {
-
   // Função para somar o tempo total em minutos
   const getTotalMinutos = (aulas) =>
     aulas.reduce((acc, aula) => {
@@ -93,7 +82,9 @@ const Courses = () => {
                     </span>
                   </div>
                   <Link to={curso.link}>
-                    <button className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2">Ver curso</button>
+                    <button className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2">
+                      Ver curso
+                    </button>
                   </Link>
                 </div>
               </div>
@@ -145,7 +136,9 @@ const Courses = () => {
                     </span>
                   </div>
                   <Link to={curso.link}>
-                    <button className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2">Ver curso</button>
+                    <button className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2">
+                      Ver curso
+                    </button>
                   </Link>
                 </div>
               </div>

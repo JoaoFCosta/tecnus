@@ -55,7 +55,7 @@ const Footer = () => {
                 />
                 <span className="visually-hidden">LinkedIn</span>
               </a>
-              <Link
+              <a
                 href="https://www.instagram.com/facampenact/"
                 target="_blank"
                 className="text-decoration-none"
@@ -69,7 +69,7 @@ const Footer = () => {
                   }}
                 />
                 <span className="visually-hidden">Instagram</span>
-              </Link>
+              </a>
             </div>
           </div>
 

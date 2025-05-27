@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaCirclePlay } from "react-icons/fa6";
@@ -6,6 +6,7 @@ import { FaCirclePlay } from "react-icons/fa6";
 import Excel from "../../assets/Excel.png";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import DoQuiz from "../../components/DoQuiz";
 
 const ExcelIntermediario = () => {
   const navigate = useNavigate();
@@ -44,6 +45,15 @@ const ExcelIntermediario = () => {
       const match = aula.duracao.match(/\d+/);
       return acc + (match ? parseInt(match[0], 10) : 0);
     }, 0);
+
+  const [aulasAssistidas, setAulasAssistidas] = useState([]);
+
+  // Função para marcar aula como assistida
+  const marcarComoAssistida = (id) => {
+    if (!aulasAssistidas.includes(id)) {
+      setAulasAssistidas([...aulasAssistidas, id]);
+    }
+  };
   return (
     <>
       <Header />
@@ -55,7 +65,7 @@ const ExcelIntermediario = () => {
       <div className="container d-flex justify-content-center gap-5">
         <div className="courseLogo badge d-flex flex-column align-items-center justify-content-center p-6 rounded-2">
           <img src={Excel} alt="Excel" />
-          <span className="textLink text-light fs-5 fw-bold text-center">
+          <span className="textLink text-light fs-5 mt-4 fw-bold text-center">
             Excel <br /> (intermediário)
           </span>
         </div>
@@ -91,8 +101,10 @@ const ExcelIntermediario = () => {
           <div className="container mt-3 d-flex justify-content-between gap-5 flex-row">
             <div
               className="position-relative playVideo d-flex align-items-center justify-content-center rounded-2"
-              style={{ width: 320, height: 180, cursor: "pointer" }}
-              onClick={() => navigate(`/curso/excel-intermediario/aula/${aula.id}`)}
+              onClick={() => {
+                marcarComoAssistida(aula.id);
+                navigate(`/curso/excel-intermediario/aula/${aula.id}`);
+              }}
             >
               <FaCirclePlay className="position-absolute top-50 start-50 translate-middle text-light fs-1" />
             </div>
@@ -105,9 +117,10 @@ const ExcelIntermediario = () => {
             <div className="d-flex flex-column align-items-end">
               <button
                 className="btn moreBtn textLink border-0 text-decoration-none text-black rounded-2 fs-5 mx-5 h-25"
-                onClick={() =>
-                  navigate(`/curso/excel-intermediario/aula/${aula.id}`)
-                }
+                onClick={() => {
+                  marcarComoAssistida(aula.id);
+                  navigate(`/curso/excel-intermediario/aula/${aula.id}`);
+                }}
               >
                 Assistir aula
               </button>
@@ -119,6 +132,13 @@ const ExcelIntermediario = () => {
           </div>
         </React.Fragment>
       ))}
+      <div className="container d-flex justify-content-center">
+        <DoQuiz
+          aulasAssistidas={aulasAssistidas}
+          aulas={aulas}
+          onClick={() => navigate("/quizzes/excel-intermediario")}
+        />
+      </div>
       <Footer />
     </>
   );
