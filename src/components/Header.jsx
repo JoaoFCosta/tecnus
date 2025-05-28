@@ -156,8 +156,17 @@ const Header = () => {
                   </ul>
                 </div>
               )}
-
               <hr />
+              {isLoggedIn && userName?.email?.endsWith("@admin.com") && (
+                <Link
+                  to="/admin-dashboard"
+                  className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4 mt-2 mb-2"
+                >
+                  <span className="fs-4 mx-2 me-4">🛠️</span>
+                  Dashboard Admin
+                </Link>
+              )}
+
 
               <button
                 className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4 mt-2"

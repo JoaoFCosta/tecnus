@@ -55,7 +55,7 @@ const ForgotPassword = () => {
             </span>
           </div>
 
-          <button type="submit" className="button btn mt-4 fw-bold">
+          <button type="submit" className="btn textLink moreBtn w-75 text-black mt-4 fw-bold">
             Entrar
           </button>
         </div>

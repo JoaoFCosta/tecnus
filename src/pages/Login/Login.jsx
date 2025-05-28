@@ -99,7 +99,7 @@ const Login = () => {
 
           <button
             type="button"
-            className="button btn mt-4 fw-bold"
+            className="btn textLink moreBtn w-75 text-black mt-4 fw-bold"
             onClick={handleLogin}
           >
             Entrar
