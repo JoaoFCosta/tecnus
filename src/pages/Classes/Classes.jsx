@@ -12,7 +12,7 @@ import { FaVolumeMute } from "react-icons/fa";
 import { IoArrowBackOutline } from "react-icons/io5";
 import { IoIosSend } from "react-icons/io";
 
-import { cursos } from "../../data/Courses";
+import { cursos, profissionais } from "../../data/Courses";
 
 const courseNames = {
   "google-drive": "Google Drive",
@@ -114,7 +114,12 @@ export default function Classes() {
   const courseTitle =
     courseNames[courseKey] || courseKey || "Curso desconhecido";
 
-  const curso = cursos.find((c) => c.link.includes(courseKey));
+  const cursoNormal = cursos.find((c) => c.link.includes(courseKey));
+  const cursoProfissional = profissionais.find((c) =>
+    c.link.includes(courseKey)
+  );
+  const curso = cursoNormal || cursoProfissional;
+  const tipoCurso = cursoNormal ? "normal" : "profissional";
   const aula = curso?.aulas.find((a) => String(a.id) === String(id));
 
   const togglePlay = () => {
@@ -310,15 +315,26 @@ export default function Classes() {
         </div>
 
         <div className="container d-flex justify-content-between">
-          <span className="fs-4 text-light mx-4">
-            Aula {id} - {aula ? aula.titulo : ""}
-          </span>
-
-          <span className="fs-4 text-light">
-            Professor: {curso ? curso.professor : ""}
-          </span>
+          {tipoCurso === "normal" ? (
+            <>
+              <span className="fs-4 text-light mx-4">
+                Aula {id} - {aula ? aula.titulo : ""}
+              </span>
+              <span className="fs-4 text-light">
+                Professor: {curso ? curso.professor : ""}
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="fs-4 text-light mx-4">
+                Aula {id} - {aula ? aula.titulo : ""}
+              </span>
+              <span className="fs-4 text-light">
+                Professor: {curso ? curso.profissionalProfessor : ""}
+              </span>
+            </>
+          )}
         </div>
-
         <div className="container mt-5 d-flex justify-content-between">
           <button
             onClick={() => window.history.back()}

@@ -120,7 +120,7 @@ export const profissionais = [
     link: "/excel-iniciante",
     descricao:
       "O Excel é um software de planilhas eletrônicas, que utiliza tabelas para realizar cálculos ou apresentar dados. Com ele, é possível organizar orçamentos, por exemplo.",
-    professor: "Matilda Rodrigues",
+    profissionalProfessor: "Matilda Rodrigues",
   },
   {
     nome: "Excel Intermediário",
@@ -136,7 +136,7 @@ export const profissionais = [
     link: "/excel-intermediario",
     descricao:
       "O Excel é um software de planilhas eletrônicas, que utiliza tabelas para realizar cálculos ou apresentar dados. Com ele, é possível organizar orçamentos, por exemplo.",
-    professor: "Walter Emilio",
+    profissionalProfessor: "Walter Emilio",
   },
   {
     nome: "Direitos do Consumidor",
@@ -146,18 +146,16 @@ export const profissionais = [
     link: "/direitos-consumidor",
     descricao:
       "Aborda sobre relações de consumo, travadas entre fornecedores (quem disponibiliza produtos ou serviços ao mercado) e consumidores (quem consome).",
-    professor: "Elídio da Silva",
+    profissionalProfessor: "Elídio da Silva",
   },
   {
     nome: "Tecnologia e Banco de Dados",
     tipo: "profissional",
     imagem: BancoDados,
-    aulas: [
-      { id: 1, titulo: "Tornar Público", duracao: "24 minutos" },
-    ],
+    aulas: [{ id: 1, titulo: "Tornar Público", duracao: "24 minutos" }],
     link: "/banco-de-dados",
     descricao:
       "Entenda essa relação no meio digital. O Banco de Dados retorna resultados consistentes e íntegros, assegurando que as políticas de segurança dos dados sejam cumpridas.",
-    professor: "Duo Lindo",
+    profissionalProfessor: "Duo Lindo",
   },
 ];
