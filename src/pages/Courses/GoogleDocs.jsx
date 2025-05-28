@@ -117,14 +117,6 @@ const GoogleDocs = () => {
         </React.Fragment>
       ))}
 
-      <div className="container d-flex justify-content-center">
-        <DoQuiz
-          aulasAssistidas={aulasAssistidas}
-          aulas={aulas}
-          onClick={() => navigate("/quizzes/google-docs")}
-        />
-      </div>
-
       <Footer />
     </>
   );

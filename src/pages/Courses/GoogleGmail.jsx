@@ -113,14 +113,6 @@ const GoogleGmail = () => {
           </div>
         </React.Fragment>
       ))}
-
-      <div className="container d-flex justify-content-center">
-        <DoQuiz
-          aulasAssistidas={aulasAssistidas}
-          aulas={aulas}
-          onClick={() => navigate("/quizzes/google-gmail")}
-        />
-      </div>
       <Footer />
     </>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams, useLocation } from "react-router";
+import { useParams, useLocation, useNavigate } from "react-router";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { FaGear } from "react-icons/fa6";
@@ -9,6 +9,10 @@ import { TbRewindBackward10 } from "react-icons/tb";
 import { TbRewindForward10 } from "react-icons/tb";
 import { FaVolumeUp } from "react-icons/fa";
 import { FaVolumeMute } from "react-icons/fa";
+import { IoArrowBackOutline } from "react-icons/io5";
+import { IoIosSend } from "react-icons/io";
+
+import { cursos } from "../../data/Courses";
 
 const courseNames = {
   "google-drive": "Google Drive",
@@ -17,7 +21,7 @@ const courseNames = {
   "google-planilhas": "Google Planilhas",
   "google-apresentacao": "Google Apresentação",
   "google-classroom": "Google Classroom",
-  "seguranca": "Segurança",
+  seguranca: "Segurança",
   "excel-iniciante": "Excel Iniciante",
   "excel-intermediario": "Excel Intermediário",
   "direitos-consumidor": "Direitos do Consumidor",
@@ -35,6 +39,7 @@ export default function Classes() {
   const location = useLocation();
   const videoRef = useRef(null);
   const trackRef = useRef(null);
+  const navigate = useNavigate();
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -43,6 +48,21 @@ export default function Classes() {
   const [volume, setVolume] = useState(1); // volume de 0 a 1
   const [isMuted, setIsMuted] = useState(false);
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
+  const [comentario, setComentario] = useState("");
+  const [comentarios, setComentarios] = useState([]);
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const nomeUsuario = user ? user.name : "Usuário";
+
+  const handleComentario = () => {
+    if (comentario.trim() !== "") {
+      setComentarios([
+        ...comentarios,
+        { nome: nomeUsuario, mensagem: comentario },
+      ]);
+      setComentario("");
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = () => {
@@ -93,6 +113,9 @@ export default function Classes() {
   const courseKey = match ? match[1] : null;
   const courseTitle =
     courseNames[courseKey] || courseKey || "Curso desconhecido";
+
+  const curso = cursos.find((c) => c.link.includes(courseKey));
+  const aula = curso?.aulas.find((a) => String(a.id) === String(id));
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -275,20 +298,81 @@ export default function Classes() {
               <div className="text-white small mx-3">
                 {formatTime(videoRef.current?.currentTime || 0)}
               </div>
-            <button
-              onClick={toggleFullScreen}
-              className="btn btn-dark btn-sm"
-              title="Tela cheia"
-            >
-              ⛶
-            </button>
+              <button
+                onClick={toggleFullScreen}
+                className="btn btn-dark btn-sm"
+                title="Tela cheia"
+              >
+                ⛶
+              </button>
             </div>
           </div>
         </div>
 
-        <p className="text-center">
-          Conteúdo da aula {id} do curso {courseTitle}.
-        </p>
+        <div className="container d-flex justify-content-between">
+          <span className="fs-4 text-light mx-4">
+            Aula {id} - {aula ? aula.titulo : ""}
+          </span>
+
+          <span className="fs-4 text-light">
+            Professor: {curso ? curso.professor : ""}
+          </span>
+        </div>
+
+        <div className="container mt-5 d-flex justify-content-between">
+          <button
+            onClick={() => window.history.back()}
+            className="btn moreBtn text-decoration-none text-black textLink fw-bold"
+          >
+            <IoArrowBackOutline /> Tela de aulas
+          </button>
+
+          {curso &&
+            aula &&
+            Number(aula.id) === curso.aulas[curso.aulas.length - 1].id && (
+              <button
+                onClick={() => navigate(`/quizzes${curso.link}`)}
+                className="btn moreBtn text-black fw-bold"
+              >
+                Fazer Quiz
+              </button>
+            )}
+        </div>
+
+        <h1 className="text-more-color fw-bold text-center mt-5">
+          Ficou com alguma dúvida? Escreva aqui em baixo:
+        </h1>
+        <div className="container mt-5 d-flex justify-content-center">
+          <input
+            className="textArea form-control bg-gray-800 text-light rounded-2 fs-3 p-3 border-0"
+            rows="4"
+            placeholder="Comentários..."
+            value={comentario}
+            onChange={(e) => setComentario(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleComentario();
+              }
+            }}
+          ></input>
+        </div>
+        <div className="container d-flex justify-content-end">
+          <button className="btn moreBtn mt-3" onClick={handleComentario}>
+            <IoIosSend />
+          </button>
+        </div>
+        <div className="container mt-4 w-100">
+          {comentarios.map((c, idx) => (
+            <div key={idx} className="bg-dark text-light rounded-2 p-3 mb-2">
+              <strong>
+                {c.nome}
+                <br />{" "}
+              </strong>{" "}
+              {c.mensagem}
+            </div>
+          ))}
+        </div>
       </div>
       <Footer />
     </>

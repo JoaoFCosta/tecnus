@@ -263,3 +263,10 @@ input[type="range"] {
   cursor: pointer;
 }
 
+input, textArea {
+  height: 250px;
+}
+
+.textArea::placeholder {
+  color: white;
+}

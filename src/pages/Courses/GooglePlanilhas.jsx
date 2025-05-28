@@ -121,14 +121,6 @@ const GooglePlanilhas = () => {
           </div>
         </React.Fragment>
       ))}
-
-      <div className="container d-flex justify-content-center">
-        <DoQuiz
-          aulasAssistidas={aulasAssistidas}
-          aulas={aulas}
-          onClick={() => navigate("/quizzes/google-planilhas")}
-        />
-      </div>
       <Footer />
     </>
   );

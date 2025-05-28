@@ -24,6 +24,7 @@ export const cursos = [
     link: "/google-drive",
     descricao:
       "O Google Drive é uma plataforma de armazenamento em nuvem, compartilhamento e também colaboração de arquivos, sendo documentos, planilhas e apresentações.",
+    professor: "Claudinho Buchecha",
   },
   {
     nome: "Google Docs",
@@ -33,6 +34,7 @@ export const cursos = [
     link: "/google-docs",
     descricao:
       "O Google Docs é voltado para a produção textual de diversos arquivos, como cartas, currículos, boletins informativos, brochuras, relatórios, planos de aula, etc.",
+    professor: "Havaiana Alegítima",
   },
   {
     nome: "Gmail",
@@ -45,6 +47,7 @@ export const cursos = [
     link: "/google-gmail",
     descricao:
       "O gmail é um serviço que permite, ao usuário, enviar e receber e-mails através do navegador, sem a necessidade de instalar um programa no computador.",
+    professor: "Getúlio de Oliveira",
   },
   {
     nome: "Google Planilhas",
@@ -58,6 +61,7 @@ export const cursos = [
     link: "/google-planilhas",
     descricao:
       "O Google Planilhas, é uma plataforma em que você cria e edita planilhas no navegador da Web sem qualquer software especial. Várias pessoas podem trabalhar simultaneamente.",
+    professor: "Rodrigo Cézar",
   },
   {
     nome: "Google Apresentações",
@@ -70,6 +74,7 @@ export const cursos = [
     link: "/google-apresentacao",
     descricao:
       "O google apresentações permite criar e formatar slides em nuvem, onde todas as mudanças que você fizer serão salvas. Você pode editar um modelo pronto ou criar um novo.",
+    professor: "Valéria da Silva",
   },
   {
     nome: "Google Classroom",
@@ -88,6 +93,7 @@ export const cursos = [
     link: "/google-classroom",
     descricao:
       "O google classroom é uma ferramenta on-line gratuita que auxilia professores, alunos e escolas com um espaço para a realização de aulas virtuais de maneira organizada.",
+    professor: "Adriana Almeida",
   },
   {
     nome: "Segurança e Tecnologia",
@@ -97,6 +103,7 @@ export const cursos = [
     link: "/seguranca",
     descricao:
       "A sua segurança é algo essencial no meio tecnológico, para manter suas informações pessoais em sigilo.",
+    professor: "Serginho Pomodoro",
   },
 ];
 
@@ -108,11 +115,12 @@ export const profissionais = [
     aulas: [
       { id: 1, titulo: "Tornar Público", duracao: "10 minutos" },
       { id: 2, titulo: "Acesso Offline", duracao: "5 minutos" },
-      { id: 3, titulo: "Tradutor", duracao: "5 minutos" },
+      { id: 3, titulo: "Criar uma Planilha", duracao: "5 minutos" },
     ],
     link: "/excel-iniciante",
     descricao:
       "O Excel é um software de planilhas eletrônicas, que utiliza tabelas para realizar cálculos ou apresentar dados. Com ele, é possível organizar orçamentos, por exemplo.",
+    professor: "Matilda Rodrigues",
   },
   {
     nome: "Excel Intermediário",
@@ -128,6 +136,7 @@ export const profissionais = [
     link: "/excel-intermediario",
     descricao:
       "O Excel é um software de planilhas eletrônicas, que utiliza tabelas para realizar cálculos ou apresentar dados. Com ele, é possível organizar orçamentos, por exemplo.",
+    professor: "Walter Emilio",
   },
   {
     nome: "Direitos do Consumidor",
@@ -137,20 +146,18 @@ export const profissionais = [
     link: "/direitos-consumidor",
     descricao:
       "Aborda sobre relações de consumo, travadas entre fornecedores (quem disponibiliza produtos ou serviços ao mercado) e consumidores (quem consome).",
+    professor: "Elídio da Silva",
   },
   {
     nome: "Tecnologia e Banco de Dados",
     tipo: "profissional",
     imagem: BancoDados,
     aulas: [
-      {
-        id: 1,
-        titulo: "Tornar Público",
-        duracao: "25 minutos",
-      },
+      { id: 1, titulo: "Tornar Público", duracao: "24 minutos" },
     ],
     link: "/banco-de-dados",
     descricao:
       "Entenda essa relação no meio digital. O Banco de Dados retorna resultados consistentes e íntegros, assegurando que as políticas de segurança dos dados sejam cumpridas.",
+    professor: "Duo Lindo",
   },
 ];

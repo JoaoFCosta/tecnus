@@ -132,13 +132,6 @@ const ExcelIntermediario = () => {
           </div>
         </React.Fragment>
       ))}
-      <div className="container d-flex justify-content-center">
-        <DoQuiz
-          aulasAssistidas={aulasAssistidas}
-          aulas={aulas}
-          onClick={() => navigate("/quizzes/excel-intermediario")}
-        />
-      </div>
       <Footer />
     </>
   );
