@@ -311,3 +311,15 @@ textArea {
   margin-top: 3rem;
   font-size: 1.5rem;
 }
+
+.card-body-data {
+  background: linear-gradient(90deg, #279dc5 1%, #bb50b1 100%);
+  height: 300px;
+}
+
+.editCourse {
+  border: 4px solid #181532;
+  width: 240px;
+  height: 240px;
+  background: #2d2d2d;
+}
