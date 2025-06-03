@@ -380,7 +380,7 @@ export default function Classes() {
         </div>
         <div className="container mt-4 w-100">
           {comentarios.map((c, idx) => (
-            <div key={idx} className="bg-dark text-light rounded-2 p-3 mb-2">
+            <div key={idx} className="bg-dark text-light p-3">
               <strong>
                 {c.nome}
                 <br />{" "}

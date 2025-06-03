@@ -30,6 +30,7 @@ import MyCourses from "./pages/Profile/MyCourses";
 import Quiz from "./pages/Quizzes/Quiz";
 import Resultado from "./pages/Quizzes/Result";
 import Classes from "./pages/Classes/Classes";
+import Dashboard from "./pages/AdminDashboard/Dashboard";
 
 // 🔹 Componente responsável pela mudança de fundo
 const AppContent = () => {
@@ -130,6 +131,7 @@ const AppContent = () => {
           element={<Classes />}
         />
         <Route path="/class/banco-dados/aula/:id" element={<Classes />} />
+        <Route path="/admin-dashboard" element={<Dashboard />} />
       </Routes>
     </main>
   );

@@ -84,12 +84,12 @@ const Profile = () => {
       <div className="container mt-5 text-light">
         <form onSubmit={handleSave}>
           <div className="row">
-            <div className="bg-gray-800 col-5 p-5 rounded-5 mb-3 d-flex flex-column align-items-center">
-              <img src={ProfileImage} alt="" className="mb-5 h-50" />
+            <div className="bg-gray-800 col-5 p-5 rounded-5 mb-3 d-flex flex-column align-items-center h-25">
+              <img src={ProfileImage} alt="" className="mb-5 h-25" />
               <div className="col-10 mb-3 d-flex">
                 <input
                   type="text"
-                  className="form-control bg-transparent border-0 textLink text-start fs-4 fw-bolder"
+                  className="form-control bg-transparent border-0 textLink text-start fs-4 fw-bolder h-75"
                   name="name"
                   value={editData.name}
                   onChange={handleChange}
@@ -101,7 +101,7 @@ const Profile = () => {
               <div className="col-10 mb-3">
                 <input
                   type="email"
-                  className="form-control bg-transparent border-0 textLink text-start fs-5"
+                  className="form-control bg-transparent border-0 textLink text-start fs-5 h-75"
                   name="email"
                   value={editData.email}
                   onChange={handleChange}
@@ -112,14 +112,14 @@ const Profile = () => {
             </div>
             <div className="col-2"></div>
             <div className="col-5 mb-3 d-flex flex-column justify-content-center bg-gray-800 p-5 rounded-5">
-              <h1 className="textLink mb-5 fw-bold">Nova Senha</h1>
+              <h1 className="textLink mb-2 fw-bold">Nova Senha</h1>
               <div className="mb-3">
                 <label className="form-label">
                   <strong className="textLink fs-3">Senha</strong>
                 </label>
                 <input
                   type="password"
-                  className="form-control textLink text-start bg-gray-600 border-0"
+                  className="form-control textLink text-start bg-gray-600 border-0 h-50"
                   name="newPassword"
                   value={editData.newPassword}
                   onChange={handleChange}
@@ -133,7 +133,7 @@ const Profile = () => {
                 </label>
                 <input
                   type="password"
-                  className="form-control textLink text-start bg-gray-600 border-0"
+                  className="form-control textLink text-start bg-gray-600 border-0 h-50"
                   name="confirmNewPassword"
                   value={editData.confirmNewPassword}
                   onChange={handleChange}
@@ -150,7 +150,7 @@ const Profile = () => {
               </label>
               <input
                 type="text"
-                className="form-control textLink text-start bg-gray-600 border-0"
+                className="form-control textLink text-start bg-gray-600 border-0 h-50"
                 name="city"
                 value={editData.city}
                 onChange={handleChange}
@@ -168,7 +168,7 @@ const Profile = () => {
               </label>
               <input
                 type="tel"
-                className="form-control textLink text-start bg-gray-600 border-0"
+                className="form-control textLink text-start bg-gray-600 border-0 h-50"
                 name="phone"
                 value={editData.phone}
                 onChange={handleChange}

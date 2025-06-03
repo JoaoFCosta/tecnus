@@ -6,6 +6,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { MdOndemandVideo } from "react-icons/md";
 import { LuBellRing } from "react-icons/lu";
 import { RxExit } from "react-icons/rx";
+import { RxDashboard } from "react-icons/rx";
 
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -107,7 +108,7 @@ const Header = () => {
             height={40}
           />
           {isLoggedIn && showMenu && (
-            <div className="position-absolute top-100 end-0 mt-2 bg-gray-700 text-light rounded-4 py-4 shadow p-2 z-3">
+            <div className="position-absolute d-flex flex-column top-100 end-0 mt-2 bg-gray-700 text-light rounded-4 py-4 px-3 shadow p-2 z-3">
               <span className="textLink text-start text-gray-400 mb-3">
                 Conta
               </span>
@@ -126,14 +127,22 @@ const Header = () => {
                 <MdOndemandVideo className="fs-4 mx-2 me-4" />
                 Meus Cursos
               </Link>
-
-              <span className="textLink text-gray-400 text-start">
+              {userName === "admin" ? (
+                <Link
+                  to="/admin-dashboard"
+                  className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4 mb-2"
+                >
+                  <RxDashboard className="fs-4 me-4"/>
+                  Dashboard
+                </Link>) : <></>
+              }
+              <span className="textLink text-gray-400 text-start mt-3">
                 Notificações
               </span>
               <br />
               <button
                 type="button"
-                className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4 mt-2"
+                className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4"
                 onClick={() => setShowNotifications((prev) => !prev)}
               >
                 <LuBellRing className="fs-4 mx-2 me-4" />
@@ -156,17 +165,8 @@ const Header = () => {
                   </ul>
                 </div>
               )}
-              <hr />
-              {isLoggedIn && userName?.email?.endsWith("@admin.com") && (
-                <Link
-                  to="/admin-dashboard"
-                  className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4 mt-2 mb-2"
-                >
-                  <span className="fs-4 mx-2 me-4">🛠️</span>
-                  Dashboard Admin
-                </Link>
-              )}
 
+              <hr />
 
               <button
                 className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4 mt-2"
