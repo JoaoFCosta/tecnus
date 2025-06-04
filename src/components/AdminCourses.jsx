@@ -27,9 +27,9 @@ const AdminCourses = () => {
 
   return (
     <div className="container">
-      <h1 className="textLink text-start fw-bold">Edite os cursos</h1>
+      <h1 className="textLink text-start fw-bold mb-2">Edite os cursos</h1>
 
-      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4 mt-3">
+      <div className="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4">
         {cursos.map((curso, idx) => (
           <div className="col" key={idx}>
             <div
