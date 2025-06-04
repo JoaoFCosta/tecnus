@@ -1,26 +1,62 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import Saturno1 from "../../assets/saturno1.png";
 import Saturno2 from "../../assets/saturno2.png";
 
 const CreateAccount = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    Id_Usuario: 0,
+    Nome_Usuario: "",
+    Email_Usuario: "",
+    Telefone_Usuario: "",
+    Endereco_Usuario: "",
+    Complemento_Usuario: "",
+    CPF_Usuario: "",
+    CEP_Usuario: "",
+    Senha_Usuario: "",
+  });
 
-  const handleCreateAccount = () => {
-    if (password !== confirmPassword) {
-      alert("As senhas não coincidem!");
-      return;
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+  };
 
-    const user = { name, email, phone, password };
-    localStorage.setItem("user", JSON.stringify(user));
-    alert("Conta criada com sucesso!");
-    navigate("/login");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Corpo da requisição:", form);
+
+    fetch("http://tecnusapi.somee.com/UsuarioControler/Cadastrar%20Usuario", {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Erro ao cadastrar usuário");
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Usuário cadastrado com sucesso!", data);
+        alert("Usuário cadastrado com sucesso!");
+        setForm({
+          Id_Usuario: 0,
+          Nome_Usuario: "",
+          Email_Usuario: "",
+          Telefone_Usuario: "",
+          Endereco_Usuario: "",
+          Complemento_Usuario: "",
+          CPF_Usuario: "",
+          CEP_Usuario: "",
+          Senha_Usuario: "",
+        });
+      })
+      .catch(async (error) => {
+        const errorMsg = (await error?.response?.text?.()) ?? error.message;
+        console.error("Erro:", errorMsg);
+        alert("Erro ao cadastrar usuário: " + errorMsg);
+      });
   };
 
   return (
@@ -43,119 +79,188 @@ const CreateAccount = () => {
           className="position-absolute start-0 top-50"
         />
         <img src={Saturno2} alt="" className="position-absolute end-0 top-0" />
-        <div className="createAccContainer">
-          <h1 className="text-header-color fw-bold text-center mb-3">
-            Crie sua conta gratuitamente
-          </h1>
 
-          <div>
-            <label htmlFor="name" className="label textLink fs-4 text-light">
-              Nome Completo
-            </label>
-            <div>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="name"
-                required
-                placeholder="Digite o seu nome completo"
-                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
+        <h1 className="text-header-color fw-bold text-center">
+          Crie sua conta gratuitamente
+        </h1>
+
+        <form onSubmit={handleSubmit}>
+          <div className="container d-flex justify-content-center">
+            <div className="row">
+              {/* Coluna Esquerda */}
+              <div className="col-md-6">
+                <div className="createAccContainer p-5">
+                  <div>
+                    <label
+                      htmlFor="nome"
+                      className="label textLink fs-4 text-light"
+                    >
+                      Nome Completo
+                    </label>
+                    <input
+                      id="nome"
+                      name="Nome_Usuario"
+                      type="text"
+                      required
+                      placeholder="Digite o seu nome completo"
+                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                      value={form.Nome_Usuario}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="label textLink fs-4 text-light"
+                    >
+                      E-mail
+                    </label>
+                    <input
+                      id="email"
+                      name="Email_Usuario"
+                      type="email"
+                      required
+                      placeholder="Digite seu e-mail"
+                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                      value={form.Email_Usuario}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="telefone"
+                      className="label textLink fs-4 text-light"
+                    >
+                      Telefone
+                    </label>
+                    <input
+                      id="telefone"
+                      name="Telefone_Usuario"
+                      type="text"
+                      required
+                      placeholder="Digite seu telefone"
+                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                      value={form.Telefone_Usuario}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="endereco"
+                      className="label textLink fs-4 text-light"
+                    >
+                      Endereço
+                    </label>
+                    <input
+                      id="endereco"
+                      name="Endereco_Usuario"
+                      type="text"
+                      required
+                      placeholder="Digite seu endereço"
+                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3"
+                      value={form.Endereco_Usuario}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Coluna Direita */}
+              <div className="col-md-6">
+                <div className="createAccContainer p-4">
+                  <div>
+                    <label
+                      htmlFor="complemento"
+                      className="label textLink fs-4 text-light"
+                    >
+                      Complemento
+                    </label>
+                    <input
+                      id="complemento"
+                      name="Complemento_Usuario"
+                      type="text"
+                      placeholder="Digite o complemento (se houver)"
+                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                      value={form.Complemento_Usuario}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="cpf"
+                      className="label textLink fs-4 text-light"
+                    >
+                      CPF
+                    </label>
+                    <input
+                      id="cpf"
+                      name="CPF_Usuario"
+                      type="text"
+                      required
+                      placeholder="Digite seu CPF"
+                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                      value={form.CPF_Usuario}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="cep"
+                      className="label textLink fs-4 text-light"
+                    >
+                      CEP
+                    </label>
+                    <input
+                      id="cep"
+                      name="CEP_Usuario"
+                      type="text"
+                      required
+                      placeholder="Digite seu CEP"
+                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                      value={form.CEP_Usuario}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="senha"
+                      className="label textLink fs-4 text-light"
+                    >
+                      Senha
+                    </label>
+                    <input
+                      id="senha"
+                      name="Senha_Usuario"
+                      type="password"
+                      required
+                      placeholder="Digite sua senha"
+                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                      value={form.Senha_Usuario}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div>
-            <label htmlFor="email" className="label textLink fs-4 text-light">
-              E-mail
-            </label>
-            <div>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                placeholder="Digite o seu e-mail"
-                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+          <div className="d-flex justify-content-center mt-4">
+            <button
+              type="submit"
+              className="btn textLink moreBtn w-50 text-black fw-bold"
+            >
+              Criar
+            </button>
           </div>
-
-          <div>
-            <label htmlFor="phone" className="label textLink fs-4 text-light">
-              Telefone para Contato
-            </label>
-            <div>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
-                required
-                placeholder="Digite o seu telefone"
-                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="password" className="label textLink fs-4 text-light">
-              Senha
-            </label>
-            <div>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="password"
-                required
-                placeholder="Digite a sua senha"
-                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="confirmPassword" className="label textLink fs-4 text-light">
-              Confirmar Senha
-            </label>
-            <div>
-              <input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                autoComplete="password"
-                required
-                placeholder="Confirme a sua senha"
-                className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
-          </div>
-
-          <button
-            type="button"
-            className="btn textLink moreBtn w-75 text-black mt-4 fw-bold"
-            onClick={handleCreateAccount}
-          >
-            Criar
-          </button>
-        </div>
-
-        <div className="d-flex flex-column align-items-center justify-content-center">
-          <h1 className="textLink text-light fs-5 mt-4">
-            Já tem uma conta?
-          </h1>
+        </form>
+        <div className="d-flex flex-column align-items-center justify-content-center mt-4">
+          <h1 className="textLink text-light fs-5">Já tem uma conta?</h1>
           <Link
             to="/login"
             className="textLink text-decoration-none text-light fs-5 fw-bold mb-3"

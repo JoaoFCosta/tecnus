@@ -93,7 +93,7 @@ main {
 
 .createAccContainer {
   width: 500px;
-  height: 855px;
+  height: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,7 +105,7 @@ main {
 }
 
 .input {
-  width: 433px;
+  width: 430px;
   height: 69px;
   color: #4b4b4b;
   font-size: 20px;
