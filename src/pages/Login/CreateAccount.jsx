@@ -4,59 +4,67 @@ import Saturno1 from "../../assets/saturno1.png";
 import Saturno2 from "../../assets/saturno2.png";
 
 const CreateAccount = () => {
-  const [form, setForm] = useState({
-    Id_Usuario: 0,
-    Nome_Usuario: "",
-    Email_Usuario: "",
-    Telefone_Usuario: "",
-    Endereco_Usuario: "",
-    Complemento_Usuario: "",
-    CPF_Usuario: "",
-    CEP_Usuario: "",
-    Senha_Usuario: "",
+  const [formData, setFormData] = useState({
+    nomeCompleto: "",
+    email: "",
+    password: "",
+    telefone: "",
   });
+  const [responseMessage, setResponseMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const API_REGISTER_URL = "http://tecnusapi.somee.com/api/Usuario/register";
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Corpo da requisição:", form);
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Previne o comportamento padrão de recarregar a página
+    setResponseMessage("Enviando dados...");
+    setIsSuccess(false);
 
-    fetch("http://tecnusapi.somee.com/UsuarioControler/Cadastrar%20Usuario", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error("Erro ao cadastrar usuário");
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Usuário cadastrado com sucesso!", data);
-        alert("Usuário cadastrado com sucesso!");
-        setForm({
-          Id_Usuario: 0,
-          Nome_Usuario: "",
-          Email_Usuario: "",
-          Telefone_Usuario: "",
-          Endereco_Usuario: "",
-          Complemento_Usuario: "",
-          CPF_Usuario: "",
-          CEP_Usuario: "",
-          Senha_Usuario: "",
-        });
-      })
-      .catch(async (error) => {
-        const errorMsg = (await error?.response?.text?.()) ?? error.message;
-        console.error("Erro:", errorMsg);
-        alert("Erro ao cadastrar usuário: " + errorMsg);
+    try {
+      const response = await fetch(API_REGISTER_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
       });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        setResponseMessage("Sucesso: " + JSON.stringify(responseData, null, 2));
+        setIsSuccess(true);
+        // Opcional: Limpar o formulário após o sucesso
+        setFormData({
+          nomeCompleto: "",
+          email: "",
+          password: "",
+          telefone: "",
+        });
+      } else {
+        setResponseMessage(
+          "Erro (" +
+            response.status +
+            "): " +
+            JSON.stringify(responseData, null, 2)
+        );
+        setIsSuccess(false);
+        console.error("Erro na requisição:", responseData);
+      }
+    } catch (error) {
+      setResponseMessage("Erro na conexão ou na requisição: " + error.message);
+      setIsSuccess(false);
+      console.error("Erro na requisição:", error);
+    }
   };
 
   return (
@@ -104,7 +112,7 @@ const CreateAccount = () => {
                       required
                       placeholder="Digite o seu nome completo"
                       className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                      value={form.Nome_Usuario}
+                      value={formData.NomeCompleto}
                       onChange={handleChange}
                     />
                   </div>
@@ -168,84 +176,23 @@ const CreateAccount = () => {
                 </div>
               </div>
 
-              {/* Coluna Direita */}
-              <div className="col-md-6">
-                <div className="createAccContainer p-4">
-                  <div>
-                    <label
-                      htmlFor="complemento"
-                      className="label textLink fs-4 text-light"
-                    >
-                      Complemento
-                    </label>
-                    <input
-                      id="complemento"
-                      name="Complemento_Usuario"
-                      type="text"
-                      placeholder="Digite o complemento (se houver)"
-                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                      value={form.Complemento_Usuario}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="cpf"
-                      className="label textLink fs-4 text-light"
-                    >
-                      CPF
-                    </label>
-                    <input
-                      id="cpf"
-                      name="CPF_Usuario"
-                      type="text"
-                      required
-                      placeholder="Digite seu CPF"
-                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                      value={form.CPF_Usuario}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="cep"
-                      className="label textLink fs-4 text-light"
-                    >
-                      CEP
-                    </label>
-                    <input
-                      id="cep"
-                      name="CEP_Usuario"
-                      type="text"
-                      required
-                      placeholder="Digite seu CEP"
-                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                      value={form.CEP_Usuario}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="senha"
-                      className="label textLink fs-4 text-light"
-                    >
-                      Senha
-                    </label>
-                    <input
-                      id="senha"
-                      name="Senha_Usuario"
-                      type="password"
-                      required
-                      placeholder="Digite sua senha"
-                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                      value={form.Senha_Usuario}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
+              <div>
+                <label
+                  htmlFor="senha"
+                  className="label textLink fs-4 text-light"
+                >
+                  Senha
+                </label>
+                <input
+                  id="senha"
+                  name="Senha_Usuario"
+                  type="password"
+                  required
+                  placeholder="Digite sua senha"
+                  className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                  value={form.Senha_Usuario}
+                  onChange={handleChange}
+                />
               </div>
             </div>
           </div>
