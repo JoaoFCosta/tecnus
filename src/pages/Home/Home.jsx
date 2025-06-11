@@ -10,8 +10,9 @@ export const Home = () => {
   const navigate = useNavigate();
 
   const handleVerMais = () => {
-    const isLoggedIn = localStorage.getItem("user");
-    if (isLoggedIn) {
+    const authToken = localStorage.getItem("authToken"); 
+    
+    if (authToken) {
       navigate("/courses");
     } else {
       navigate("/login");

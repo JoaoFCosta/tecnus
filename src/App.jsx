@@ -14,17 +14,7 @@ import CreateAccount from "./pages/Login/CreateAccount";
 import ForgotPassword from "./pages/Login/ForgotPassword";
 import Courses from "./pages/Courses/Courses";
 import Terms from "./pages/Terms/Terms";
-import GoogleDrive from "./pages/Courses/GoogleDrive";
-import GoogleDocs from "./pages/Courses/GoogleDocs";
-import GoogleGmail from "./pages/Courses/GoogleGmail";
-import GooglePlanilhas from "./pages/Courses/GooglePlanilhas";
-import GoogleApresentacao from "./pages/Courses/GoogleApresentacao";
-import GoogleClassroom from "./pages/Courses/GoogleClassroom";
-import Seguranca from "./pages/Courses/Seguranca";
-import ExcelIniciante from "./pages/Courses/ExcelIniciante";
-import ExcelIntermediario from "./pages/Courses/ExcelIntermediario";
-import DireitosConsumidor from "./pages/Courses/DireitosConsumidor";
-import BancoDados from "./pages/Courses/BancoDados";
+
 import Profile from "./pages/Profile/Profile";
 import MyCourses from "./pages/Profile/MyCourses";
 import Quiz from "./pages/Quizzes/Quiz";
@@ -64,46 +54,6 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<CreateAccount />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/google-drive" element={<GoogleDrive />} />
-        <Route path="/curso/google-drive/aula/:id" element={<GoogleDrive />} />
-        <Route path="/google-docs" element={<GoogleDocs />} />
-        <Route path="/curso/google-docs/aula/:id" element={<GoogleDocs />} />
-        <Route path="/google-gmail" element={<GoogleGmail />} />
-        <Route path="/curso/google-gmail/aula/:id" element={<GoogleGmail />} />
-        <Route path="/google-planilhas" element={<GooglePlanilhas />} />
-        <Route
-          path="/curso/google-planilhas/aula/:id"
-          element={<GooglePlanilhas />}
-        />
-        <Route path="/google-apresentacao" element={<GoogleApresentacao />} />
-        <Route
-          path="/curso/google-apresentacao/aula/:id"
-          element={<GoogleApresentacao />}
-        />
-        <Route path="/google-classroom" element={<GoogleClassroom />} />
-        <Route
-          path="/curso/google-classroom/aula/:id"
-          element={<GoogleClassroom />}
-        />
-        <Route path="/seguranca" element={<Seguranca />} />
-        <Route path="/curso/seguranca/aula/:id" element={<Seguranca />} />
-        <Route path="/excel-iniciante" element={<ExcelIniciante />} />
-        <Route
-          path="/curso/excel-iniciante/aula/:id"
-          element={<ExcelIniciante />}
-        />
-        <Route path="/excel-intermediario" element={<ExcelIntermediario />} />
-        <Route
-          path="/curso/excel-intermediario/aula/:id"
-          element={<ExcelIntermediario />}
-        />
-        <Route path="/direitos-consumidor" element={<DireitosConsumidor />} />
-        <Route
-          path="/curso/direitos-consumidor/aula/:id"
-          element={<DireitosConsumidor />}
-        />
-        <Route path="/banco-de-dados" element={<BancoDados />} />
-        <Route path="/curso/banco-dados/aula/:id" element={<BancoDados />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/my-courses" element={<MyCourses />} />
         <Route path="/quizzes" element={<Quiz />} />
@@ -141,7 +91,7 @@ const AppContent = () => {
 const App = () => {
   return (
     <BrowserRouter>
-      <AppContent />
+        <AppContent />
     </BrowserRouter>
   );
 };

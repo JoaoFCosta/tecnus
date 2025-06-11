@@ -18,19 +18,26 @@ const Header = () => {
 
   useEffect(() => {
     const updateUser = () => {
-      const user = JSON.parse(localStorage.getItem("user"));
-      if (user) {
+      // Modificado para ler 'authToken' e 'loggedInUsername' diretamente do localStorage
+      const token = localStorage.getItem("authToken");
+      const storedUsername = localStorage.getItem("loggedInUsername");
+
+      if (token && storedUsername) {
         setIsLoggedIn(true);
-        setUserName(user.name);
+        setUserName(storedUsername);
       } else {
         setIsLoggedIn(false);
         setUserName("");
       }
     };
 
-    updateUser();
-    window.addEventListener("userUpdated", updateUser);
-    return () => window.removeEventListener("userUpdated", updateUser);
+    updateUser(); // Chamada inicial
+    window.addEventListener("storage", updateUser);
+
+    return () => {
+      window.removeEventListener("storage", updateUser);
+    
+    };
   }, []);
 
   useEffect(() => {
@@ -52,7 +59,9 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("loggedInUsername");
+
     setIsLoggedIn(false);
     setUserName("");
     setShowMenu(false);
@@ -64,7 +73,6 @@ const Header = () => {
     "Novo curso disponível.",
     "Lucas Costa respondeu seu comentário.",
   ];
-
   return (
     <header className="header textLink navbar fixed-top top-0 start-0 end-0 z-3 text-light p-3">
       <div className="container-fluid d-flex align-items-center justify-content-between">
@@ -132,10 +140,12 @@ const Header = () => {
                   to="/admin-dashboard"
                   className="dropdown-item textLink bg-gray-800 p-2 px-4 rounded-4 mb-2"
                 >
-                  <RxDashboard className="fs-4 me-4"/>
+                  <RxDashboard className="fs-4 me-4" />
                   Dashboard
-                </Link>) : <></>
-              }
+                </Link>
+              ) : (
+                <></>
+              )}
               <span className="textLink text-gray-400 text-start mt-3">
                 Notificações
               </span>

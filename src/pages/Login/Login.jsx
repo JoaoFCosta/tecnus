@@ -10,9 +10,9 @@ const Login = () => {
   });
   const [responseMessage, setResponseMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const navigate = useNavigate(); // Hook para navegação
+  const navigate = useNavigate();
 
-  const API_LOGIN_URL = "http://tecnusapi.somee.com/api/Usuario/login";
+  const API_LOGIN_URL = "https://localhost:7289/api/Usuario/login";
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -40,13 +40,21 @@ const Login = () => {
       const responseData = await response.json();
 
       if (response.ok) {
-        // AQUI: Armazenar o token
         if (responseData.token) {
-          localStorage.setItem("authToken", responseData.token); // Armazena o token no localStorage
+          localStorage.setItem("authToken", responseData.token);
+
+          // AQUI ESTÁ A MUDANÇA: Armazene o nome diretamente da resposta
+          if (responseData.username) {
+            // Verifique se a propriedade 'username' existe
+            localStorage.setItem("loggedInUsername", responseData.username);
+          } else {
+            // Caso a API não retorne o username por algum motivo
+            localStorage.removeItem("loggedInUsername");
+          }
+
           setResponseMessage("Login bem-sucedido! Redirecionando...");
           setIsSuccess(true);
-          // Redireciona para a página inicial após o login bem-sucedido
-          navigate("/"); // <-- AQUI A MUDANÇA PRINCIPAL!
+          navigate("/");
         } else {
           setResponseMessage(
             "Login bem-sucedido, mas nenhum token foi retornado pela API."
