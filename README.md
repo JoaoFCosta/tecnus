@@ -21,6 +21,11 @@
   <img alt="React Router" src="https://img.shields.io/badge/React%20Router-CA4245.svg?style=flat&logo=React-Router&logoColor=white">
 </div>
 
+## Links
+<a href="https://github.com/JoaoFCosta/tecnus">Projeto FrontEnd</a>
+<a href="https://github.com/JoaoFCosta/TecnusAPI">Projeto BackEnd</a>
+<a href="https://tecnus.vercel.app/">Site na Vercel</a>
+
 ---
 
 ## 📌 Índice
