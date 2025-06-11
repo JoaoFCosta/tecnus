@@ -72,3 +72,6 @@ cd tecnus
 
 # Instale as dependências
 npm install
+
+# Rode a aplicação
+npm run dev
