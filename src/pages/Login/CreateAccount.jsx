@@ -94,103 +94,79 @@ const CreateAccount = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="container d-flex justify-content-center">
-            <div className="row">
-              {/* Coluna Esquerda */}
-              <div className="col-md-6">
-                <div className="createAccContainer p-5">
-                  <div>
-                    <label
-                      htmlFor="nome"
-                      className="label textLink fs-4 text-light"
-                    >
-                      Nome Completo
-                    </label>
-                    <input
-                      id="nome"
-                      name="Nome_Usuario"
-                      type="text"
-                      required
-                      placeholder="Digite o seu nome completo"
-                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                      value={formData.NomeCompleto}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="label textLink fs-4 text-light"
-                    >
-                      E-mail
-                    </label>
-                    <input
-                      id="email"
-                      name="Email_Usuario"
-                      type="email"
-                      required
-                      placeholder="Digite seu e-mail"
-                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                      value={form.Email_Usuario}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="telefone"
-                      className="label textLink fs-4 text-light"
-                    >
-                      Telefone
-                    </label>
-                    <input
-                      id="telefone"
-                      name="Telefone_Usuario"
-                      type="text"
-                      required
-                      placeholder="Digite seu telefone"
-                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                      value={form.Telefone_Usuario}
-                      onChange={handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="endereco"
-                      className="label textLink fs-4 text-light"
-                    >
-                      Endereço
-                    </label>
-                    <input
-                      id="endereco"
-                      name="Endereco_Usuario"
-                      type="text"
-                      required
-                      placeholder="Digite seu endereço"
-                      className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3"
-                      value={form.Endereco_Usuario}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
+            <div className="createAccContainer p-5">
+              <div>
+                <label
+                  htmlFor="nomeCompleto"
+                  className="label textLink fs-4 text-light"
+                >
+                  Nome Completo
+                </label>
+                <input
+                  id="nomeCompleto"
+                  name="nomeCompleto"
+                  type="text"
+                  required
+                  placeholder="Digite o seu nome completo"
+                  className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                  value={formData.nomeCompleto}
+                  onChange={handleChange}
+                />
               </div>
 
               <div>
                 <label
-                  htmlFor="senha"
+                  htmlFor="email"
+                  className="label textLink fs-4 text-light"
+                >
+                  E-mail
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="Digite seu e-mail"
+                  className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="telefone"
+                  className="label textLink fs-4 text-light"
+                >
+                  Telefone
+                </label>
+                <input
+                  id="telefone"
+                  name="telefone"
+                  type="text"
+                  required
+                  placeholder="Digite seu telefone"
+                  className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
+                  value={formData.telefone}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="password"
                   className="label textLink fs-4 text-light"
                 >
                   Senha
                 </label>
                 <input
-                  id="senha"
-                  name="Senha_Usuario"
+                  id="password"
+                  name="password"
                   type="password"
                   required
                   placeholder="Digite sua senha"
                   className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                  value={form.Senha_Usuario}
+                  value={formData.password}
                   onChange={handleChange}
                 />
               </div>

@@ -93,7 +93,7 @@ main {
 
 .createAccContainer {
   width: 500px;
-  height: 600px;
+  height: 590px;
   display: flex;
   flex-direction: column;
   justify-content: center;

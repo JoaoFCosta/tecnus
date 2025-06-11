@@ -1,51 +1,73 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Saturno1 from "../../assets/saturno1.png";
 import Saturno2 from "../../assets/saturno2.png";
 
 const Login = () => {
-  const [form, setForm] = useState({
-    Email_Usuario: "",
-    Senha_Usuario: "",
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
   });
+  const [responseMessage, setResponseMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const navigate = useNavigate(); // Hook para navegação
+
+  const API_LOGIN_URL = "http://tecnusapi.somee.com/api/Usuario/login";
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prevForm) => ({ ...prevForm, [name]: value }));
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Corpo da requisição:", form);
+    setResponseMessage("Enviando credenciais...");
+    setIsSuccess(false);
 
-    fetch("http://tecnusapi.somee.com/UsuarioControler/Login", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    })
-      .then(async (response) => {
-        if (!response.ok) {
-          const errorText = await response.text();
-          throw new Error(errorText || "Erro ao fazer login");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Login realizado com sucesso!", data);
-        alert("Login realizado com sucesso!");
-        setForm({
-          Email_Usuario: "",
-          Senha_Usuario: "",
-        });
-        // Aqui você pode salvar dados no localStorage ou atualizar estado global
-      })
-      .catch((error) => {
-        console.error("Erro:", error.message);
-        alert("Erro ao fazer login: " + error.message);
+    try {
+      const response = await fetch(API_LOGIN_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
       });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        // AQUI: Armazenar o token
+        if (responseData.token) {
+          localStorage.setItem("authToken", responseData.token); // Armazena o token no localStorage
+          setResponseMessage("Login bem-sucedido! Redirecionando...");
+          setIsSuccess(true);
+          // Redireciona para a página inicial após o login bem-sucedido
+          navigate("/"); // <-- AQUI A MUDANÇA PRINCIPAL!
+        } else {
+          setResponseMessage(
+            "Login bem-sucedido, mas nenhum token foi retornado pela API."
+          );
+          setIsSuccess(false);
+        }
+      } else {
+        setResponseMessage(
+          "Erro (" +
+            response.status +
+            "): " +
+            JSON.stringify(responseData, null, 2)
+        );
+        setIsSuccess(false);
+        console.error("Erro no login:", responseData);
+      }
+    } catch (error) {
+      setResponseMessage("Erro na conexão ou na requisição: " + error.message);
+      setIsSuccess(false);
+      console.error("Erro na requisição:", error);
+    }
   };
 
   return (
@@ -70,7 +92,7 @@ const Login = () => {
         <img src={Saturno2} alt="" className="position-absolute end-0 top-0" />
         <div className="loginContainer d-flex flex-column justify-content-center align-items-center">
           <h1 className="text-header-color fw-bold">Entre na sua conta</h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleLogin}>
             <div>
               <label htmlFor="email" className="label textLink fs-4 text-light">
                 E-mail
@@ -78,13 +100,13 @@ const Login = () => {
               <div>
                 <input
                   id="email"
-                  name="Email_Usuario"
+                  name="email"
                   type="email"
                   autoComplete="email"
                   required
                   placeholder="Digite o seu e-mail"
                   className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                  value={form.Email_Usuario}
+                  value={formData.email}
                   onChange={handleChange}
                 />
               </div>
@@ -100,13 +122,13 @@ const Login = () => {
               <div>
                 <input
                   id="password"
-                  name="Senha_Usuario"
+                  name="password"
                   type="password"
                   autoComplete="password"
                   required
                   placeholder="Digite a sua senha"
                   className="input textLink bg-transparent border border-3 border-black rounded-3 mb-3 p-3"
-                  value={form.Senha_Usuario}
+                  value={formData.password}
                   onChange={handleChange}
                 />
               </div>
