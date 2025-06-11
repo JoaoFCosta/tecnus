@@ -4,188 +4,362 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ProfileImage from "../../assets/profilePhoto.png";
 import { GoPencil } from "react-icons/go";
+import { useNavigate } from "react-router";
 
 const Profile = () => {
-  const [user, setUser] = useState(null);
-  const [editData, setEditData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    city: "",
-    password: "",
+  const navigate = useNavigate();
+
+  // --- Estado ÚNICO para todos os dados do formulário ---
+  const [formData, setFormData] = useState({
+    // Dados do Perfil Principal
+    nomeCompleto: "",
+    email: "", // Para exibição no perfil, e também será o novo email para alteração
+    telefone: "",
+
+    // Dados de Alterar Senha
+    currentPassword: "",
     newPassword: "",
     confirmNewPassword: "",
+
+    // Dados de Alterar Email (o 'email' acima já é o novo email)
+    currentPasswordForEmail: "", // Senha para confirmar alteração de email
   });
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      const parsed = JSON.parse(storedUser);
-      setUser(parsed);
-      setEditData({
-        name: parsed.name || "",
-        email: parsed.email || "",
-        phone: parsed.phone || "",
-        city: parsed.city || "",
-        password: "",
-        newPassword: "",
-        confirmNewPassword: "",
-      });
-    }
-  }, []);
+  const [isProfileEditing, setIsProfileEditing] = useState(false); // Modo de edição do perfil principal
 
-  if (!user) {
-    return <div className="text-light">Nenhum usuário logado.</div>;
+  // --- Estados para mensagens e loading ---
+  const [generalMessage, setGeneralMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // Um único loading para todas as operações
+
+  // --- URLs da API ---
+  const API_PROFILE_URL = "https://localhost:7289/api/Usuario/profile";
+  const API_CHANGE_PASSWORD_URL =
+    "https://localhost:7289/api/Usuario/change-password";
+  const API_CHANGE_EMAIL_URL =
+    "https://localhost:7289/api/Usuario/change-email";
+
+  // --- Efeito para carregar os dados do perfil ao montar o componente ---
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      const token = localStorage.getItem("authToken");
+      if (!token) {
+        navigate("/login");
+        return;
+      }
+
+      try {
+        setIsLoading(true); // Começa a carregar
+        const response = await fetch(API_PROFILE_URL, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setFormData((prev) => ({
+            ...prev,
+            nomeCompleto: data.nomeCompleto || "",
+            email: data.email || "", // O email atual do usuário
+            telefone: data.telefone || "",
+          }));
+          setGeneralMessage("Perfil carregado.");
+          setIsSuccess(true);
+        } else if (response.status === 401) {
+          localStorage.removeItem("authToken");
+          localStorage.removeItem("loggedInUsername");
+          navigate("/login");
+          setGeneralMessage("Sua sessão expirou. Faça login novamente.");
+          setIsSuccess(false);
+        } else {
+          const errorData = await response.json();
+          setGeneralMessage(
+            "Erro ao carregar perfil: " +
+              (errorData.message || "Erro desconhecido")
+          );
+          setIsSuccess(false);
+        }
+      } catch (error) {
+        setGeneralMessage("Erro de conexão: " + error.message);
+        setIsSuccess(false);
+      } finally {
+        setIsLoading(false); // Termina de carregar
+      }
+    };
+
+    fetchUserProfile();
+  }, [navigate]);
+
+  // --- Handler único para mudanças nos inputs ---
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  // --- O ÚNICO HANDLESUBMIT ---
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setGeneralMessage("Salvando alterações...");
+    setIsSuccess(false);
+    setIsLoading(true);
+
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      setGeneralMessage("Token de autenticação não encontrado. Faça login.");
+      setIsSuccess(false);
+      setIsLoading(false);
+      navigate("/login");
+      return;
+    }
+
+    let profileUpdated = false;
+    let passwordUpdated = false;
+    let emailUpdated = false;
+
+    try {
+      // 1. Tentar SALVAR DADOS DO PERFIL (Nome, Telefone)
+      if (isProfileEditing) {
+        // Só envia se estiver no modo de edição do perfil
+        const profileResponse = await fetch(API_PROFILE_URL, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            NomeCompleto: formData.nomeCompleto,
+            Telefone: formData.telefone,
+          }),
+        });
+
+        if (profileResponse.ok) {
+          profileUpdated = true;
+          setGeneralMessage("Perfil atualizado!");
+          setIsSuccess(true);
+          // Atualiza o username no localStorage se o nome completo mudou
+          localStorage.setItem("loggedInUsername", formData.nomeCompleto);
+          window.dispatchEvent(
+            new CustomEvent("userUpdated", {
+              detail: { username: formData.nomeCompleto },
+            })
+          );
+          setIsProfileEditing(false); // Sai do modo de edição do perfil
+        } else {
+          const errorData = await profileResponse.json();
+          setGeneralMessage(
+            "Erro ao atualizar perfil: " +
+              (errorData.message || JSON.stringify(errorData))
+          );
+          setIsSuccess(false);
+          setIsLoading(false);
+          return; // Para a execução se o perfil não puder ser salvo
+        }
+      }
+
+      // 2. Tentar ALTERAR SENHA (se os campos estiverem preenchidos)
+      if (
+        formData.currentPassword &&
+        formData.newPassword &&
+        formData.confirmNewPassword
+      ) {
+        if (formData.newPassword !== formData.confirmNewPassword) {
+          setGeneralMessage("As novas senhas não coincidem!");
+          setIsSuccess(false);
+          setIsLoading(false);
+          return;
+        }
+
+        const passwordResponse = await fetch(API_CHANGE_PASSWORD_URL, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            currentPassword: formData.currentPassword,
+            newPassword: formData.newPassword,
+          }),
+        });
+
+        if (passwordResponse.ok) {
+          passwordUpdated = true;
+          setGeneralMessage((prev) => prev + " Senha alterada com sucesso!");
+          setIsSuccess(true);
+          // Limpa os campos da senha após o sucesso
+          setFormData((prev) => ({
+            ...prev,
+            currentPassword: "",
+            newPassword: "",
+            confirmNewPassword: "",
+          }));
+        } else {
+          const errorData = await passwordResponse.json();
+          setGeneralMessage(
+            "Erro ao alterar senha: " +
+              (errorData.message || JSON.stringify(errorData))
+          );
+          setIsSuccess(false);
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // 3. Tentar ALTERAR EMAIL (se o campo de novo email e senha estiverem preenchidos e diferentes do atual)
+      if (
+        formData.email &&
+        formData.currentPasswordForEmail &&
+        formData.email !== formData.prevEmail
+      ) {
+        // Adicionei 'prevEmail' ao formData se vc quiser comparar
+        const emailResponse = await fetch(API_CHANGE_EMAIL_URL, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            newEmail: formData.email,
+            currentPassword: formData.currentPasswordForEmail,
+          }),
+        });
+
+        if (emailResponse.ok) {
+          emailUpdated = true;
+          setGeneralMessage(
+            (prev) =>
+              prev + " Email alterado com sucesso! Faça login novamente."
+          );
+          setIsSuccess(true);
+          // Após alterar o email, o token antigo é inválido. Redirecionar para login.
+          localStorage.removeItem("authToken");
+          localStorage.removeItem("loggedInUsername");
+          setTimeout(() => navigate("/login"), 3000);
+        } else {
+          const errorData = await emailResponse.json();
+          setGeneralMessage(
+            "Erro ao alterar email: " +
+              (errorData.message || JSON.stringify(errorData))
+          );
+          setIsSuccess(false);
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // Mensagem final se nada específico foi atualizado mas o formulário foi submetido
+      if (!profileUpdated && !passwordUpdated && !emailUpdated) {
+        setGeneralMessage("Nenhuma alteração foi detectada para salvar.");
+        setIsSuccess(false);
+      }
+    } catch (error) {
+      setGeneralMessage("Erro de conexão geral: " + error.message);
+      setIsSuccess(false);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // --- Renderização Condicional ---
+  if (isLoading && generalMessage === "Salvando alterações...") {
+    // Ajusta para não mostrar "Carregando perfil..." durante o save
+    return (
+      <div className="text-light text-center mt-5">Carregando perfil...</div>
+    );
+  }
+  // Se estiver carregando o perfil inicialmente, exibe a mensagem de carregamento.
+  if (
+    isLoading &&
+    formData.nomeCompleto === "" &&
+    generalMessage === "Perfil carregado."
+  ) {
+    return (
+      <div className="text-light text-center mt-5">Carregando perfil...</div>
+    );
   }
 
-  const handleChange = (e) => {
-    setEditData({ ...editData, [e.target.name]: e.target.value });
-  };
-
-  const handleSave = (e) => {
-    e.preventDefault();
-    // Validação de senha
-    if (
-      editData.newPassword &&
-      editData.newPassword !== editData.confirmNewPassword
-    ) {
-      alert("As novas senhas não coincidem!");
-      return;
-    }
-    // Se o usuário quer trocar a senha, verifica a senha antiga
-    if (editData.newPassword && editData.password !== user.password) {
-      alert("Senha atual incorreta!");
-      return;
-    }
-    const updatedUser = {
-      ...user,
-      name: editData.name,
-      email: editData.email,
-      phone: editData.phone,
-      city: editData.city,
-      password: editData.newPassword ? editData.newPassword : user.password,
-    };
-    setUser(updatedUser);
-    localStorage.setItem("user", JSON.stringify(updatedUser));
-    // Dispara evento para atualizar o Header
-    window.dispatchEvent(new Event("userUpdated"));
-    alert("Perfil atualizado com sucesso!");
-    setEditData({
-      ...editData,
-      password: "",
-      newPassword: "",
-      confirmNewPassword: "",
-    });
-  };
   return (
     <>
       <Header />
 
       <div className="container mt-5 text-light">
-        <form onSubmit={handleSave}>
+        {/* Formulário de Perfil Principal */}
+        <form onSubmit={handleSubmit}>
           <div className="row">
-            <div className="bg-gray-800 col-5 p-5 rounded-5 mb-3 d-flex flex-column align-items-center h-25">
-              <img src={ProfileImage} alt="" className="mb-5 h-25" />
-              <div className="col-10 mb-3 d-flex">
+            <div className="bg-gray-800 col-5 p-5 rounded-5 mb-3 d-flex flex-column align-items-center">
+              <h1 className="textLink mb-5">Perfil</h1>
+              <div className="col-10 mb-3 d-flex align-items-center">
                 <input
                   type="text"
-                  className="form-control bg-transparent border-0 textLink text-start fs-4 fw-bolder h-75"
-                  name="name"
-                  value={editData.name}
+                  className="form-control bg-transparent border-0 textLink text-start fs-4 mt-5 fw-bolder h-50"
+                  name="nomeCompleto"
+                  value={formData.nomeCompleto}
                   onChange={handleChange}
-                  placeholder="Nome"
-                  required
+                  placeholder="Nome Completo"
                 />
-                <GoPencil className="fs-1" />
               </div>
               <div className="col-10 mb-3">
                 <input
+                  className="form-control bg-transparent border-0 textLink text-start fs-5 mt-2 h-75"
                   type="email"
-                  className="form-control bg-transparent border-0 textLink text-start fs-5 h-75"
                   name="email"
-                  value={editData.email}
+                  value={formData.email}
                   onChange={handleChange}
-                  placeholder="Email"
-                  required
+                  placeholder="E-mail"
                 />
               </div>
             </div>
-            <div className="col-2"></div>
-            <div className="col-5 mb-3 d-flex flex-column justify-content-center bg-gray-800 p-5 rounded-5">
-              <h1 className="textLink mb-2 fw-bold">Nova Senha</h1>
-              <div className="mb-3">
-                <label className="form-label">
-                  <strong className="textLink fs-3">Senha</strong>
-                </label>
-                <input
-                  type="password"
-                  className="form-control textLink text-start bg-gray-600 border-0 h-50"
-                  name="newPassword"
-                  value={editData.newPassword}
-                  onChange={handleChange}
-                  placeholder="Nova senha"
-                />
-              </div>
 
-              <div className="mb-3">
-                <label className="form-label">
-                  <strong className="textLink fs-3">Confirmar senha</strong>
-                </label>
+            <div className="col-2"></div>
+
+            <div className="bg-gray-800 col-5 p-5 rounded-5 mb-3 d-flex flex-column align-items-center">
+              <h1 className="textLink mb-5">Alterar Senha</h1>
+              <div className="col-10 mb-3 d-flex align-items-center">
                 <input
+                  className="form-control bg-transparent border-0 textLink text-start fs-4 mt-5 fw-bolder h-50"
                   type="password"
-                  className="form-control textLink text-start bg-gray-600 border-0 h-50"
-                  name="confirmNewPassword"
-                  value={editData.confirmNewPassword}
+                  name="senha"
+                  value={formData.senha}
                   onChange={handleChange}
-                  placeholder="Confirme a nova senha"
+                  placeholder="Senha"
+                />
+              </div>
+              <div className="col-10 mb-3">
+                <input
+                  className="form-control bg-transparent border-0 textLink text-start mt-2 fs-5 h-75"
+                  type="password"
+                  name="confirmarSenha"
+                  value={formData.confirmarSenha}
+                  onChange={handleChange}
+                  placeholder="Confirmar Senha"
                 />
               </div>
             </div>
-          </div>
-          <div className="row bg-gray-800 p-5 rounded-5 mb-3 mt-5">
-            <div className="col-5 mb-3">
-              <h1 className="textLink">Cidade</h1>
-              <label className="form-label">
-                <strong className="textLink">Adicione a sua cidade</strong>
-              </label>
+
+            <div className="col-12 bg-gray-800 p-5 rounded-5 mb-3 d-flex flex-column align-items-center">
+              <h1 className="textLink mb-4">Telefone</h1>
+
               <input
+                className="form-control bg-transparent border-0 textLink text-start fs-4 mt-2 fw-bolder h-50"
                 type="text"
-                className="form-control textLink text-start bg-gray-600 border-0 h-50"
-                name="city"
-                value={editData.city}
-                onChange={handleChange}
-                placeholder="Cidade"
-              />
-            </div>
-            <div className="col-2"></div>
-            <div className="col-5 mb-3">
-              <h1 className="textLink">Telefone</h1>
-              <label className="form-label">
-                <strong className="textLink">
-                  Alterar meu telefone:{" "}
-                  <span className="fw-normal textLink">{user.phone}</span>
-                </strong>
-              </label>
-              <input
-                type="tel"
-                className="form-control textLink text-start bg-gray-600 border-0 h-50"
-                name="phone"
-                value={editData.phone}
+                name="telefone"
+                value={formData.telefone}
                 onChange={handleChange}
                 placeholder="Telefone"
               />
             </div>
           </div>
+
           <div className="d-flex justify-content-center mt-5">
-            <button
-              type="submit"
-              className="btn textLink p-2 px-5 moreBtn fw-bold text-black border-0 fs-3"
-            >
-              Salvar conta
+            <button type="submit" className="btn moreBtn text-black fs-3">
+              Salvar
             </button>
           </div>
         </form>
       </div>
+
       <Footer />
     </>
   );
