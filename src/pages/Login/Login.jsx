@@ -12,7 +12,7 @@ const Login = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
 
-  const API_LOGIN_URL = "https://localhost:7289/api/Usuario/login";
+  const API_LOGIN_URL = "http://tecnusapi.somee.com/api/Usuario/login";
 
   const handleChange = (e) => {
     const { id, value } = e.target;
